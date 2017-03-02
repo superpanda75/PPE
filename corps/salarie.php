@@ -1,0 +1,206 @@
+<?php
+
+require 'Model/SalarieDAO.php';
+
+class Salarie
+{
+    private $_id;
+    private $_nom;
+    private $_prenom;
+    private $_email;
+    private $_photo;
+    private $_identifiant;
+    private $_password;
+    private $_status; //TODO: 0 : admin, 1 : salarie, 2 : chef
+    private $_credit;
+    private $_nbJour;
+
+    public function __construct($id,
+                                $nom,
+                                $prenom,
+                                $email,
+                                $photo = null,
+                                $identifiant,
+                                $password,
+                                $status,
+                                $credit,
+                                $nbJour)
+    {
+        $this->setId($id);
+        $this->setNom($nom);
+        $this->setPrenom($prenom);
+        $this->setEmail($email);
+        $this->setPhoto($photo);
+        $this->setIdentifiant($identifiant);
+        $this->setPassword($password);
+        $this->setStatus($status);
+        $this->setCredit($credit);
+        $this->setNbJour($nbJour);
+    }
+
+    /**
+     * @return Int
+     */
+    public function getId()
+    {
+        return $this->_id;
+    }
+
+    /**
+     * @param Int $id
+     */
+    public function setId($id)
+    {
+        $this->_id = $id;
+    }
+
+    /**
+     * @return String
+     */
+    public function getNom()
+    {
+        return $this->_nom;
+    }
+
+    /**
+     * @param String $nom
+     */
+    public function setNom($nom)
+    {
+        $this->_nom = $nom;
+    }
+
+    /**
+     * @return String
+     */
+    public function getPrenom()
+    {
+        return $this->_prenom;
+    }
+
+    /**
+     * @param String $prenom
+     */
+    public function setPrenom($prenom)
+    {
+        $this->_prenom = $prenom;
+    }
+
+    /**
+     * @return String
+     */
+    public function getEmail()
+    {
+        return $this->_email;
+    }
+
+    /**
+     * @param String $email
+     */
+    public function setEmail($email)
+    {
+        $this->_email = $email;
+    }
+
+    /**
+     * @return String
+     */
+    public function getPhoto()
+    {
+        return $this->_photo;
+    }
+
+    /**
+     * @param String $photo
+     */
+    public function setPhoto($photo)
+    {
+        $this->_photo = $photo;
+    }
+
+    /**
+     * @return String
+     */
+    public function getIdentifiant()
+    {
+        return $this->_identifiant;
+    }
+
+    /**
+     * @param String $identifiant
+     */
+    public function setIdentifiant($identifiant)
+    {
+        $this->_identifiant = $identifiant;
+    }
+
+    /**
+     * @return String
+     */
+    public function getPassword()
+    {
+        return $this->_password;
+    }
+
+    /**
+     * @param String $password
+     */
+    public function setPassword($password)
+    {
+        $this->_password = $password;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->_status;
+    }
+
+    /**
+     * @param int $status
+     */
+    public function setStatus($status)
+    {
+        $this->_status = $status;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCredit()
+    {
+        return $this->_credit;
+    }
+
+    /**
+     * @param int $credit
+     */
+    public function setCredit($credit)
+    {
+        $this->_credit = $credit;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNbJour()
+    {
+        return $this->_nbJour;
+    }
+
+    /**
+     * @param int $nbJour
+     */
+    public function setNbJour($nbJour)
+    {
+        $this->_nbJour = $nbJour;
+    }
+
+
+
+
+}
+
+?>

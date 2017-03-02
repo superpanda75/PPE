@@ -1,5 +1,5 @@
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([a-zA-Z]{1,20})([\/]?)$ index.php?p=$1
-ErrorDocument 404 /M2L/index.php?p=404
+RewriteRule ^([a-zA-Z\-]{1,20})([\/]?)$ index.php?page=$1 [L]
+ErrorDocument 404 /slot1/index.php?page=404

@@ -29,7 +29,14 @@ Licence URI: http://www.os-templates.com/template-terms
         <div class="fl_right">
             <ul>
                 <li><a href="#"><i class="fa fa-lg fa-home"></i></a></li>
-                <li><a href="index.php?page=loginController.php"">Login</a></li>
+                <?php
+                if(isset($_SESSION['connecte']) && $_SESSION['connecte'] = true){
+                    echo "<li><a href='index.php?page=loginController&a=logout'>Deconnexion</a></li>";
+                } else{
+                    echo "<li><a href='index.php?page=loginController'>Connexion</a></li>";
+                }
+                ?>
+
                 <li><a href="#">Register</a></li>
             </ul>
         </div>
@@ -43,22 +50,17 @@ Licence URI: http://www.os-templates.com/template-terms
     <header id="header" class="hoc clear">
         <div id="logo">
             <!-- ################################################################################################ -->
-            <h1><a href="index.php?page=acceuil.php">M.2.L</a></h1>
+            <h1><a href="<?=BASE_URL?>/accueil">M.2.L</a></h1>
             <h2>Maison des ligues de la Lorraine</h2>
             <!-- ################################################################################################ -->
         </div>
         <nav id="mainav" class="clear">
             <!-- ################################################################################################ -->
             <ul class="clear">
-                <li class="active"><a href="index.php?page=acceuil.php">Acceuil</a></li>
+                <li class="active"><a href="<?=BASE_URL?>/accueil">Accueil</a></li>
                 <li><a class="drop" href="#">Formations</a>
                     <ul>
-                        <li><a href="index.php?page=galleryController.php">Formateurs</a></li>
-                        <li><a href="index.php?page=full-widthController.php">Commentaires</a></li>
-                        <li><a href="index.php?page=sidebar-leftController.html">Sidebar Left</a></li>
-                        <li><a href="index.php?page=sidebar-rightController.html">Sidebar Right</a></li>
-                        <li><a href="index.php?page=basic-gridController.html">Basic Grid</a></li>
-                        <li><a href="<?=BASE_URL?>/galleryController">Formateurs</a></li>
+                        <li><a href="<?=BASE_URL?>/FormationController">Formations</a></li>
                         <li><a href="<?=BASE_URL?>/full-widthController">Commentaires</a></li>
                         <li><a href="<?=BASE_URL?>/sidebar-leftController">Sidebar Left</a></li>
                         <li><a href="<?=BASE_URL?>/sidebar-rightController">Sidebar Right</a></li>
@@ -151,17 +153,7 @@ echo $contenu;
         <!-- ################################################################################################ -->
     </footer>
 </div>
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<div class="wrapper row5">
-    <div id="copyright" class="hoc clear">
-        <!-- ################################################################################################ -->
-        <p class="fl_left">Copyright &copy; 2016 - All Rights Reserved - <a href="#">Domain Name</a></p>
-        <p class="fl_right">Template by <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
-        <!-- ################################################################################################ -->
-    </div>
-</div>
+
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->

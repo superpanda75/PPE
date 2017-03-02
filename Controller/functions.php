@@ -6,11 +6,7 @@ require 'model/CommentaireDAO.php';
 require 'model/FormationDAO.php';
 require 'model/PrestataireDAO.php';
 //============================================User Functions==================================================//
-function connect($login,$password){
 
-    $user = getUserByLogin($login,$password);
-    return $user;
-}
 
 /*function disconnect (){
     unset($_SESSION['connecte']);

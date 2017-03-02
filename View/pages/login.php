@@ -4,7 +4,7 @@
         <div class="one_third">
             <form method="POST">
                 <fieldset>
-                    <legend>Newsletter:</legend>
+                    <legend>Login</legend>
                     <input class="btmspace-15" name="identifiant" type="text" value="" placeholder="Identifiant">
                     <input class="btmspace-15" name="password" type="password" value="" placeholder="Mot de passe">
                     <button type="submit" name="submit" value="submit">Connexion</button>

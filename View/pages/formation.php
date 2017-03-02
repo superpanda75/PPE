@@ -1,50 +1,75 @@
-<?php
-$nb_formation = Get_nb_formations();
-
-for ($j=1;$j<=$nb_formation;$j++) {
-    ?>
-
-    <div class="row">
-        <?php
-        for ($i=1;$i<=$nb_formation;$i++){
-            Get_formations($i);
-            ?>
-            <article class='col-xs-3 work'>
-                <img src='VIEW/images/<?php$i?>/1.png' alt=''/><br>
-                <strong><?php $formations['titre_formation'] ?>/<?php$j?> - <?php$i?></strong><br>
-                <em><?php $formations['contenu_formation'] ?></em>
-                <div class='work_detail'>
-                    <hr/>
-                    <div class='row'>
-
-
-                        <div class='col-xs-8'>
-                            <img src='View/images/<?php$i?>/2.png'/>
-                            <img src='View/images/<?php$i?>/3.png'/>
-                            <img src='View/images/<?php$i?>/4.png'/>
-                        </div>
-
-                        <div class='col-xs-4'>
-                            <h2>Ma formation </h2>
-                            <p><em>Informatique</em></p>
-                            <p>Lorem ipsum dolor et pata !</p>
-                        </div>
-
-                    </div>
-                    <hr/>
-                </div>
-            </article>
-
-        <?php } ?>
-
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row2">
+    <div id="breadcrumb" class="hoc clear">
+        <!-- ################################################################################################ -->
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Lorem</a></li>
+            <li><a href="#">Ipsum</a></li>
+            <li><a href="#">Dolor</a></li>
+        </ul>
+        <!-- ################################################################################################ -->
     </div>
-
-    <div class="row row-detail"></div>
-
-<?php } ?>
-
 </div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script src="../../../js/m2l.js"></script>
-<script src="../../../js/m2l.js"></script>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row3">
+    <main class="hoc container clear">
+        <!-- main body -->
+        <!-- ################################################################################################ -->
+        <div class="content">
+            <!-- ################################################################################################ -->
+            <div id="gallery">
+                <figure>
+                    <header class="heading">Formations Disponibles :</header>
+                    <ul class="nospace clear">
+                        <?php
+                        $i=0;
+                        foreach ($openFormations as $formation) {
+                            if ($i%4 == 0){
+                                echo "<li class='one_quarter first'><a href='#'><img src='" .$formation->getImage()."' alt=''></a></li>";
+                            }else {
+                                echo "<li class='one_quarter'><a href='#'><img src='" .$formation->getImage()."' alt=''></a></li>";
+                            }
+                            $i++;
+                        }
+                        ?>
+                    </ul>
+                    <figcaption>Gallery Description Goes Here</figcaption>
+                </figure>
+            </div>
+            <!-- ################################################################################################ -->
+            <!-- ################################################################################################ -->
+            <nav class="pagination">
+                <ul>
+                    <li><a href="#">&laquo; Previous</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><strong>&hellip;</strong></li>
+                    <li><a href="#">6</a></li>
+                    <li class="current"><strong>7</strong></li>
+                    <li><a href="#">8</a></li>
+                    <li><a href="#">9</a></li>
+                    <li><strong>&hellip;</strong></li>
+                    <li><a href="#">14</a></li>
+                    <li><a href="#">15</a></li>
+                    <li><a href="#">Next &raquo;</a></li>
+                </ul>
+            </nav>
+            <!-- ################################################################################################ -->
+        </div>
+        <!-- ################################################################################################ -->
+        <!-- / main body -->
+        <div class="clear"></div>
+    </main>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- JAVASCRIPTS -->
+<script src="../layout/scripts/jquery.min.js"></script>
+<script src="../layout/scripts/jquery.backtotop.js"></script>
+<script src="../layout/scripts/jquery.mobilemenu.js"></script>

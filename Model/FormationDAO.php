@@ -1,47 +1,43 @@
 <?php
-try {
-    $pdo = new PDO("mysql:host=localhost;charset=utf8;dbname=m2l","root","");;
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo 'Échec lors de la connexion : ' . $e->getMessage();
+
+require 'Model/connect.php';
+
+
+function getAllFormations(){
+    $key = new PDO('mysql:host=localhost;dbname=m2l','root','password');
+    $query = $key->prepare('SELECT * FROM formation');
+    $query->execute();
+    $formations = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    return $formations;
 }
 
-$pdo = new PDO("mysql:host=localhost;charset=utf8;dbname=m2l","root","");
+function getFormationById($id){
+    $key = new PDO('mysql:host=localhost;dbname=m2l','root','password');
+    $query = $key->prepare('SELECT * FROM formation WHERE id_f=:id_formation');
+    $query->bindParam(':id_formation',$id,PDO::PARAM_INT);
+    $query->execute();
+    $formation = $query->fetchAll(PDO::FETCH_ASSOC);
 
-function Get_formation (){
-    global $pdo;
-    #Cette requete permet compter le nombre de formations par id
-    $requete = $pdo->query('SELECT * FROM formation');
-    $formation = $requete->fetch();
-
-    return $formation['COUNT(id_f)'];
+    return $formation;
 }
+function getAvailableFormationsByUserId($id)
+{
+    $key = connector();
 
-function Get_nb_formation (){
-       global $pdo;
-    #Cette requete permet compter le nombre de formations par id
-    $requete = $pdo->query('SELECT COUNT(id_f) as nbFormation FROM formation');
-    $nb_formation = $requete->fetch();
+    $query = $key->prepare('SELECT * FROM formation fo
+                            WHERE fo.id_f NOT IN (
+                                                  SELECT id_formation
+							                      FROM participer pa
+							                      WHERE pa.id_salarie =:id_salarie
+							                      )
+							ORDER BY date_debut ASC
+                            LIMIT 20		                      ');
+    $query->bindParam(':id_salarie', $id, PDO::PARAM_INT);
+    $query->execute();
+    $availabeFormations = $query->fetchAll(PDO::FETCH_ASSOC);
 
-    return $nb_formation['nbFormation'];
+        return $availabeFormations;
+
 }
-
-function Get_formation_titre ($id){
-
-        global $pdo;
-    #Cette requete permet de ressortir le titre des formations
-    $req = $pdo->query("SELECT titre  FROM formation WHERE id_f=".$id);
-    $titre_formation = $req->fetch();
-
-    return $titre_formation['titre'];
-}
-
-
-function Get_formation_contenu ($id){
-        global $pdo;
-    #Cette requete permet de ressortir le contenu des formations
-    $req = $pdo->query("SELECT contenu  FROM formation WHERE id_f=".$id);
-    $contenu_formation = $req->fetch();
-
-    return $contenu_formation['contenu'];
-}
+?>
