@@ -1,10 +1,9 @@
 <?php
-
-require 'Model/connect.php';
-
-
+/**
+ * @return array
+ */
 function getAllFormations(){
-    $key = new PDO('mysql:host=localhost;dbname=m2l','root','password');
+    $key = connector();
     $query = $key->prepare('SELECT * FROM formation');
     $query->execute();
     $formations = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -12,8 +11,12 @@ function getAllFormations(){
     return $formations;
 }
 
+/**
+ * @param $id
+ * @return array
+ */
 function getFormationById($id){
-    $key = new PDO('mysql:host=localhost;dbname=m2l','root','password');
+    $key = connector();
     $query = $key->prepare('SELECT * FROM formation WHERE id_f=:id_formation');
     $query->bindParam(':id_formation',$id,PDO::PARAM_INT);
     $query->execute();
@@ -21,6 +24,11 @@ function getFormationById($id){
 
     return $formation;
 }
+
+/**
+ * @param $id
+ * @return array
+ */
 function getAvailableFormationsByUserId($id)
 {
     $key = connector();
@@ -39,5 +47,19 @@ function getAvailableFormationsByUserId($id)
 
         return $availabeFormations;
 
+}
+
+/**
+ * @param $id
+ * @return array
+ */
+function getTypeById($id){
+    $key = connector();
+    $query = $key->prepare('SELECT * FROM type_formation WHERE id_t=:id_type');
+    $query->bindParam(':id_type',$id,PDO::PARAM_INT);
+    $query->execute();
+    $formation = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    return $formation;
 }
 ?>

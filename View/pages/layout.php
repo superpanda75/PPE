@@ -1,3 +1,4 @@
+<?php header( 'content-type: text/html; charset=utf-8' ); ?>
 <!DOCTYPE html>
 <!--
 Template Name: Cytocean
@@ -8,10 +9,11 @@ Licence URI: http://www.os-templates.com/template-terms
 -->
 <html lang="fr">
 <head>
-    <title>Cytocean</title>
-    <meta charset="utf-8">
+    <title>M2L</title>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="View/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+
 </head>
 <body id="top">
 <!-- ################################################################################################ -->
@@ -64,7 +66,7 @@ Licence URI: http://www.os-templates.com/template-terms
                         <li><a href="<?=BASE_URL?>/full-widthController">Commentaires</a></li>
                         <li><a href="<?=BASE_URL?>/sidebar-leftController">Sidebar Left</a></li>
                         <li><a href="<?=BASE_URL?>/sidebar-rightController">Sidebar Right</a></li>
-                        <li><a href="<?=BASE_URL?>/basic-gridController">Basic Grid</a></li>
+                        <li><a href="<?= BASE_URL ?>/basic-gridController">Basic Grid</a></li>
                     </ul>
                 </li>
                 <li><a class="drop" href="#">Dropdown</a>

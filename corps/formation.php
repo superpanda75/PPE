@@ -52,9 +52,6 @@ class Formation
         $this->setCommentaire($contenu);
     }
 
-
-
-
     /**
      * @return mixed
      */
@@ -230,11 +227,5 @@ class Formation
     {
         $this->_contenu = $contenu;
     }
-
-
-
-
-
 }
-
 ?>

@@ -9,17 +9,13 @@ if(isset($_SESSION['connecte'])){
 
 	if(!isset($_GET['page']) || $_GET['page'] == "") {
 		$_GET['page'] = "accueil";
-		echo "test1";
 	}
 	else {
-		echo "test2";
 		if(!file_exists("controller/".$_GET['page'].".php")) {
 			$_GET['page'] = '404';
-			echo "test3";
 		}
 	}
 }
-
 else{
 	$_GET['page']='loginController';
 	echo "test4";

@@ -1,3 +1,3 @@
 <?php
-include ('View/layout/pages/basic_grid.html');
+require ('View/pages/basic-grid.php');
 ?>

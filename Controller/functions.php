@@ -1,5 +1,6 @@
 <?php
 //DAOs
+require 'Model/connect.php';
 require 'model/SalarieDAO.php';
 require 'model/AdresseDAO.php';
 require 'model/CommentaireDAO.php';

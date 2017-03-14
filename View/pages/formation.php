@@ -12,6 +12,24 @@
         </ul>
         <!-- ################################################################################################ -->
     </div>
+    <?php
+    if (isset($result)) {
+        if ($result == 'La demande d\'inscription a bien été envoyée !') {
+            echo '<div class="alert alert-success">
+                    <strong>'.$result.'</strong>
+                  </div>';
+
+        } elseif ($result == 'votre solde est insuffisant pour vous inscrire à cette formation') {
+            echo '<div class="alert alert-warning">
+                    <strong>'.$result.'</strong>
+                  </div>';
+
+        } else {
+            echo '<div class="alert alert-danger">
+                    <strong>'.$result.'</strong>
+                  </div>';
+        }
+    }?>
 </div>
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
@@ -24,15 +42,16 @@
             <!-- ################################################################################################ -->
             <div id="gallery">
                 <figure>
-                    <header class="heading">Formations Disponibles :</header>
+                    <h1 class="center">Voici les formations disponibles à venir :</h1>
+                    <header class="heading ">Votre solde : <?php echo $_SESSION['curr_user'][0]['credit']; ?> credits</header>
                     <ul class="nospace clear">
                         <?php
                         $i=0;
                         foreach ($openFormations as $formation) {
                             if ($i%4 == 0){
-                                echo "<li class='one_quarter first'><a href='#'><img src='" .$formation->getImage()."' alt=''></a></li>";
+                                echo "<li class='one_quarter first'><a href='".BASE_URL."/FormationDetailController&f=".$formation->getId()."'><img src='" .$formation->getImage()."' alt=''></a></li>";
                             }else {
-                                echo "<li class='one_quarter'><a href='#'><img src='" .$formation->getImage()."' alt=''></a></li>";
+                                echo "<li class='one_quarter'><a href='".BASE_URL."/FormationDetailController&f=".$formation->getId()."'><img src='" .$formation->getImage()."' alt=''></a></li>";
                             }
                             $i++;
                         }
