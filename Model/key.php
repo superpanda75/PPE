@@ -2,9 +2,9 @@
 // Appel d'une variable globale pour utiliser dans les fonctions
 global $key;
 try {
-    $key = new PDO('mysql:host=localhost;dbname=m2l;','root','');
+    $key = new PDO("mysql:host=haithemboq123456.mysql.db;dbname=haithemboq123456;","haithemboq123456","Shaco1994");
 }
 catch(Exception $e){
-    die('Erreur de connection à la base de donnée');
+    die('Erreur de connection ï¿½ la base de donnï¿½e');
 }
 ?>

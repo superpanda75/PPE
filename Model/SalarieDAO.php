@@ -5,6 +5,16 @@
  * @param $password
  * @return array
  */
+function getUserById($id){
+    $key = connector();
+    $query = $key->prepare('SELECT * FROM salarie WHERE id_s=:id_salarie');
+    $query->bindParam(':id_salarie',$id,PDO::PARAM_INT);
+    $query->execute();
+    $salarie = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    return $salarie;
+}
+
 function getUserByLogin($login,$password){
     $key = connector();
     $query= $key->prepare('SELECT * FROM salarie
@@ -26,6 +36,8 @@ function  updateCredit($idUser,$amount){
     $query->bindParam(':idUser',$idUser,PDO::PARAM_INT);
     $query->execute();
 }
+
+
 
 
 ?>

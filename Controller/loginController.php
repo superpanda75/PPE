@@ -1,10 +1,10 @@
 <?php
 require 'Model/connect.php';
-require 'model/SalarieDAO.php';
-require 'model/AdresseDAO.php';
-require 'model/CommentaireDAO.php';
-require 'model/FormationDAO.php';
-require 'model/PrestataireDAO.php';
+require 'Model/SalarieDAO.php';
+require 'Model/AdresseDAO.php';
+require 'Model/CommentaireDAO.php';
+require 'Model/FormationDAO.php';
+require 'Model/PrestataireDAO.php';
 
 /**
  * @param $login
@@ -12,7 +12,7 @@ require 'model/PrestataireDAO.php';
  * @return array
  *
  * Cette fonction permet de se connecter, elle prend en parametres le contenu des champs
- * de login (login/password) puis execute la requête dans le model via la fonction getUserByLogin
+ * de login (login/password) puis execute la requï¿½te dans le model via la fonction getUserByLogin
  */
 function connect($login,$password){
 
@@ -31,7 +31,7 @@ if (isset($_GET['a']) && $_GET['a']=="logout"){
 }
 
 /**
- * Dans un premier temps nous verifions si les champs ont bien été remplis
+ * Dans un premier temps nous verifions si les champs ont bien ï¿½tï¿½ remplis
  */
 if(isset($_POST['submit'])) {
 

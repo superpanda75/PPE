@@ -1,4 +1,4 @@
-<div class="bgded overlay" style="background-image:url('View/images/demo/backgrounds/01.png');">
+<div class="bgded overlay" style="background-image:url('<?=BASE_URL?>/View/images/demo/backgrounds/01.png');">
     <div id="pageintro" class="hoc clear">
         <!-- ################################################################################################ -->
         <div class="flexslider basicslider">
@@ -50,7 +50,7 @@
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
-<div class="wrapper bgded" style="background-image:url('View/images/demo/backgrounds/03.png');">
+<div class="wrapper bgded" style="background-image:url('<?=BASE_URL?>/View/images/demo/backgrounds/03.png');">
     <div class="hoc split clear">
         <article>
             <!-- ################################################################################################ -->
@@ -58,13 +58,13 @@
             <h6 class="heading">Tellus in pretium lacinia</h6>
             <p class="btmspace-30">Nec scelerisque diam lobortis ut phasellus ex orci posuere mollis tellus id lacinia pharetra dolor duis facilisis consequat elit in feugiat justo.</p>
             <div class="group">
-                <figure class="one_third first"><img src="View/images/demo/320x220.png" alt="">
+                <figure class="one_third first"><img src="<?=BASE_URL?>/View/images/demo/320x220.png" alt="">
                     <figcaption>Pulvinar</figcaption>
                 </figure>
-                <figure class="one_third"><img src="View/images/demo/320x220.png" alt="">
+                <figure class="one_third"><img src="<?=BASE_URL?>/View/images/demo/320x220.png" alt="">
                     <figcaption>Auctor</figcaption>
                 </figure>
-                <figure class="one_third"><img src="View/images/demo/320x220.png" alt="">
+                <figure class="one_third"><img src="<?=BASE_URL?>/View/images/demo/320x220.png" alt="">
                     <figcaption>Donec</figcaption>
                 </figure>
             </div>
@@ -81,7 +81,7 @@
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
-<div class="wrapper bgded overlay" style="background-image:url('View/images/demo/backgrounds/03.png');">
+<div class="wrapper bgded overlay" style="background-image:url('<?=BASE_URL?>/View/images/demo/backgrounds/03.png');">
     <div id="cta" class="hoc clear">
         <!-- ################################################################################################ -->
         <article>
@@ -96,7 +96,7 @@
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
-<div class="wrapper bgded overlay" style="background-image:url('View/images/demo/backgrounds/04.png');">
+<div class="wrapper bgded overlay" style="background-image:url('<?=BASE_URL?>/View/images/demo/backgrounds/04.png');">
     <main class="hoc container clear">
         <!-- main body -->
         <!-- ################################################################################################ -->
@@ -107,7 +107,7 @@
         </div>
         <div class="group latest">
             <article class="one_third first">
-                <figure><a href="#"><img src="images/demo/320x220.png" alt=""></a>
+                <figure><a href="#"><img src="<?=BASE_URL?>/images/demo/320x220.png" alt=""></a>
                     <figcaption>
                         <time datetime="2045-04-06T08:15+00:00"><strong>06</strong> <em>Apr</em></time>
                     </figcaption>
@@ -123,7 +123,7 @@
                 </div>
             </article>
             <article class="one_third">
-                <figure><a href="#"><img src="images/demo/320x220.png" alt=""></a>
+                <figure><a href="#"><img src="<?=BASE_URL?>/images/demo/320x220.png" alt=""></a>
                     <figcaption>
                         <time datetime="2045-04-05T08:15+00:00"><strong>05</strong> <em>Apr</em></time>
                     </figcaption>
@@ -139,7 +139,7 @@
                 </div>
             </article>
             <article class="one_third">
-                <figure><a href="#"><img src="images/demo/320x220.png" alt=""></a>
+                <figure><a href="#"><img src="<?=BASE_URL?>/images/demo/320x220.png" alt=""></a>
                     <figcaption>
                         <time datetime="2045-04-04T08:15+00:00"><strong>04</strong> <em>Apr</em></time>
                     </figcaption>

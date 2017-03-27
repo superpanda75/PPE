@@ -13,7 +13,6 @@ function openFormations()
     $openFormations = getAvailableFormationsByUserId($_SESSION['curr_user'][0]['id_s']);
     $i=0;
     $objArrayFormations = array();
-
     foreach ($openFormations as $index){
         $formation = new Formation($index['id_f'],
                                    $index['titre'],

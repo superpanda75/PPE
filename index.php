@@ -1,5 +1,5 @@
 <?php
-require "model/key.php";
+ini_set('display_errors',1);
 session_start();
 
 define('BASE_URL', dirname($_SERVER['SCRIPT_NAME']));
@@ -11,20 +11,19 @@ if(isset($_SESSION['connecte'])){
 		$_GET['page'] = "accueil";
 	}
 	else {
-		if(!file_exists("controller/".$_GET['page'].".php")) {
+		if(!file_exists("Controller/".$_GET['page'].".php")) {
 			$_GET['page'] = '404';
 		}
 	}
 }
 else{
 	$_GET['page']='loginController';
-	echo "test4";
 }
 ob_start();
 	include "Controller/".$_GET['page'].".php";
 	$contenu = ob_get_contents();
 ob_end_clean();
-require "view/pages/layout.php";
+require "View/pages/layout.php";
 
 
 ?>

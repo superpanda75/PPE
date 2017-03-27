@@ -35,4 +35,74 @@ function addDemande($idSalarie,$idValidateur,$idFormation){
 
     $query->fetchAll(PDO::FETCH_ASSOC);
 }
+
+function getPendingFormationsDatas($idSalarie){
+    $key = connector();
+
+    $query = $key->prepare('SELECT *
+                            FROM formation f
+                            JOIN participer p on p.id_formation = f.id_f
+                            JOIN salarie s on s.id_s = p.id_validateur
+                            WHERE id_salarie =:salarie
+                            AND state = 1
+                            ORDER BY date_demande ASC');
+    $query->bindParam(':salarie', $idSalarie, PDO::PARAM_INT);
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
+
+function getPendingStatus($idSalarie)
+{
+    $key = connector();
+
+    $query = $key->prepare('SELECT *
+                            FROM participer
+                            WHERE id_salarie =:salarie
+                            AND state = 1
+                            ORDER BY date_demande ASC');
+    $query->bindParam(':salarie', $idSalarie, PDO::PARAM_INT);
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
+
+function getPendingFormations($idSalarie)
+{
+    $key = connector();
+
+    $query = $key->prepare('SELECT *
+                            FROM formation f
+                            JOIN participer p on p.id_formation = f.id_f
+                            WHERE id_salarie =:salarie
+                            AND state = 1
+                            ORDER BY date_demande ASC');
+    $query->bindParam(':salarie', $idSalarie, PDO::PARAM_INT);
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
+
+function getValidators($idSalarie){
+    $key = connector();
+
+    $query = $key->prepare('SELECT *
+                            FROM salarie s
+                            JOIN participer p ON p.id_validateur = s.id_s
+                            AND p.id_salarie =:salarie
+                            ORDER BY id_participation');
+    $query->bindParam(':salarie', $idSalarie, PDO::PARAM_INT);
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
+
+function deleteParticipation($idParticipation){
+    $key = connector();
+
+    $query = $key->prepare('DELETE FROM participer
+                            WHERE id_participation=:participation');
+    $query->bindParam(':participation', $idParticipation, PDO::PARAM_INT);
+    return $query->execute();
+}
 ?>

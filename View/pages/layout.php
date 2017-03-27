@@ -12,7 +12,12 @@ Licence URI: http://www.os-templates.com/template-terms
     <title>M2L</title>
     <meta http-equiv="content-type" content="text/html" charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link href="View/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+    <link id="stylesheet" href="<?=BASE_URL?>/View/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+    <script>
+        function swapStyleSheet(sheet){
+            document.getElementById('stylesheet').setAttribute('href', sheet);
+        }
+    </script>
 
 </head>
 <body id="top">
@@ -30,16 +35,17 @@ Licence URI: http://www.os-templates.com/template-terms
         </div>
         <div class="fl_right">
             <ul>
-                <li><a href="#"><i class="fa fa-lg fa-home"></i></a></li>
                 <?php
                 if(isset($_SESSION['connecte']) && $_SESSION['connecte'] = true){
-                    echo "<li><a href='index.php?page=loginController&a=logout'>Deconnexion</a></li>";
+                    echo "<li><a href='".BASE_URL."/accueil'><i class='fa fa-lg fa-home'></i></a></li>";
+                    echo "<li><a href='".BASE_URL."/AccountController'><i class='fa fa-lg fa-user'></i>Profil</a></li>";
+                    echo "<li><a href='".BASE_URL."/loginController?a=logout'>Deconnexion</a></li>";
+
                 } else{
-                    echo "<li><a href='index.php?page=loginController'>Connexion</a></li>";
+                    echo "<li><a href='".BASE_URL."/loginController'><i class='fa fa-lg fa-'></i></a></li>";
+                    echo "<li><a href='".BASE_URL."/loginController'>Connexion</a></li>";
                 }
                 ?>
-
-                <li><a href="#">Register</a></li>
             </ul>
         </div>
         <!-- ################################################################################################ -->
@@ -90,16 +96,9 @@ Licence URI: http://www.os-templates.com/template-terms
 </div>
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
-
-
-
 <?php
 echo $contenu;
 ?>
-
-
-
-
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <div class="wrapper row4">
@@ -161,13 +160,11 @@ echo $contenu;
 <!-- ################################################################################################ -->
 <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
 <!-- JAVASCRIPTS -->
-<script src="View/js/jquery.min.js"></script>
-<script src="View/js/jquery.backtotop.js"></script>
-<script src="View/js/jquery.mobilemenu.js"></script>
-<script src="View/js/jquery.flexslider-min.js"></script>
-<script src="View/js/jquery.particleground.js"></script>
-<script src="View/js/jquery.particleground.min.js"></script>
-<script src="View/js/jquery-1.11.1.min.js"></script>
-<script src="View/js/demo.js"></script>
+<script src="<?=BASE_URL?>/View/js/jquery.min.js"></script>
+<script src="<?=BASE_URL?>/View/js/jquery.backtotop.js"></script>
+<script src="<?=BASE_URL?>/View/js/jquery.mobilemenu.js"></script>
+<script src="<?=BASE_URL?>/View/js/jquery.flexslider-min.js"></script>
+<script src="<?=BASE_URL?>/View/js/jquery-1.11.1.min.js"></script>
+<script src="<?=BASE_URL?>/View/js/demo.js"></script>
 </body>
 </html>
