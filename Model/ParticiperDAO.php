@@ -52,14 +52,15 @@ function getPendingFormationsDatas($idSalarie){
     return $result;
 }
 
-function getPendingStatus($idSalarie)
-{
+function getValidatedFormationsDatas($idSalarie){
     $key = connector();
 
     $query = $key->prepare('SELECT *
-                            FROM participer
+                            FROM formation f
+                            JOIN participer p on p.id_formation = f.id_f
+                            JOIN salarie s on s.id_s = p.id_validateur
                             WHERE id_salarie =:salarie
-                            AND state = 1
+                            AND state = 2 OR state = 4
                             ORDER BY date_demande ASC');
     $query->bindParam(':salarie', $idSalarie, PDO::PARAM_INT);
     $query->execute();
@@ -67,13 +68,28 @@ function getPendingStatus($idSalarie)
     return $result;
 }
 
-function getPendingFormations($idSalarie)
-{
+function getDoneFormationsDatas($idSalarie){
     $key = connector();
 
     $query = $key->prepare('SELECT *
                             FROM formation f
                             JOIN participer p on p.id_formation = f.id_f
+                            JOIN salarie s on s.id_s = p.id_validateur
+                            WHERE id_salarie =:salarie
+                            AND state = 3
+                            ORDER BY date_demande ASC');
+    $query->bindParam(':salarie', $idSalarie, PDO::PARAM_INT);
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
+
+function getPendingStatus($idSalarie)
+{
+    $key = connector();
+
+    $query = $key->prepare('SELECT *
+                            FROM participer
                             WHERE id_salarie =:salarie
                             AND state = 1
                             ORDER BY date_demande ASC');
@@ -105,4 +121,51 @@ function deleteParticipation($idParticipation){
     $query->bindParam(':participation', $idParticipation, PDO::PARAM_INT);
     return $query->execute();
 }
+
+function  validateFormation($idParticipation, $status = 2){
+    $dateIns = date("Y-m-d H:i:s");
+    $key = connector();
+    $query= $key->prepare('UPDATE participer
+                           SET state = :state , date_validation = :dateValidation
+                           WHERE id_participation=:idParticipation');
+    $query->bindParam(':dateValidation',$dateIns);
+    $query->bindParam(':idParticipation',$idParticipation,PDO::PARAM_INT);
+    $query->bindParam(':state',$status,PDO::PARAM_INT);
+    return $query->execute();
+}
+/*
+ * UPDATE salarie s, participer p
+                           SET s.credit = s.credit + (
+                                                   SELECT cout
+                                                   FROM formation
+                                                   WHERE id_f =:idFormation
+                                                      )
+                           WHERE  s.id_s = p.id_salarie
+                           AND p.id_salarie =:idUser
+                           AND s.id_s =:idUser
+ */
+function  declineFormation($idParticiper){
+    $key = connector();
+    $query= $key->prepare('SELECT f.id_f, f.cout, f.duree, p.id_salarie
+                           FROM formation f, participer p
+                           WHERE f.id_f = p.id_formation
+                           AND p.id_participation = :id
+                           ');
+    $query->bindParam(':id',$idParticiper,PDO::PARAM_INT);
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    //MODIFICATION DE LA TABLE SALARIE
+    var_dump($result);
+    $query= $key->prepare('UPDATE salarie s
+                           SET s.credit = s.credit +:cout,
+                           s.nb_jour = s.nb_jour +:duree
+                           WHERE  s.id_s = :demandeur
+                           ');
+    $query->bindParam(':cout',$result[0]['cout'],PDO::PARAM_INT);
+    $query->bindParam(':duree',$result[0]['duree'],PDO::PARAM_INT);
+    $query->bindParam(':demandeur',$result[0]['id_salarie'],PDO::PARAM_INT);
+    return $query->execute();
+}
+
 ?>

@@ -164,7 +164,6 @@ echo $contenu;
 <script src="<?=BASE_URL?>/View/js/jquery.backtotop.js"></script>
 <script src="<?=BASE_URL?>/View/js/jquery.mobilemenu.js"></script>
 <script src="<?=BASE_URL?>/View/js/jquery.flexslider-min.js"></script>
-<script src="<?=BASE_URL?>/View/js/jquery-1.11.1.min.js"></script>
-<script src="<?=BASE_URL?>/View/js/demo.js"></script>
+<script src="<?=BASE_URL?>/View/js/jquery-3.2.0.min.js"></script>
 </body>
 </html>

@@ -38,6 +38,7 @@ function getAvailableFormationsByUserId($id)
                                                   SELECT id_formation
 							                      FROM participer pa
 							                      WHERE pa.id_salarie =:id_salarie
+							                      AND pa.state != 4
 							                      )
 							ORDER BY date_debut ASC
                             LIMIT 20		                      ');
