@@ -17,9 +17,11 @@
                         <ul>
                             <li class="tablinks"  onclick="openCity(event, 'Dublin')"><a>Gestion des formations</a></li>
                             <li class="tablinks"  onclick="openCity(event, 'Singapour')"><a>Gestion des équipes</a></li>
+                            <li class="tablinks"  ><a href="<?=BASE_URL?>/adminFormController">Gestion des FROMATIONS ADMIN</a></li>
                             <ul>
                                 <li><a href="#">Modifier une équipe</a></li>
                                 <li><a href="#">Créer une nouvelle équipe</a></li>
+                                <li><a href="<?= BASE_URL ?>/contactController">M2L-Contact</a></li>
                             </ul>
 
 
@@ -55,35 +57,40 @@
 
             <div id="London" class="tabcontent">
             <h1>VOS FORMATIONS EN ATTENTE DE VALIDATION :</h1>
-            <h1>Table(s)</h1>
                 <div class="scrollable">
                     <table>
-                        <thead>
-                        <tr>
-                            <th class="center">Formation</th>
-                            <th class="center">Référent</th>
-                            <th class="center">date demande</th>
-                            <th class="center">Annuler</th>
-                        </tr>
-                        </thead>
-                        <tbody>
                         <?php
                         $i=0;
-                        foreach($formatedDatesPFD as $key )
+                        if ($formatedDatesPFD) {
+                            echo "
+                        <thead>
+                        <tr>
+                            <th class='center'>Formation</th>
+                            <th class='center'>Référent</th>
+                            <th class='center'>date demande</th>
+                            <th class='center'>Annuler</th>
+                        </tr>
+                        </thead>
+                        <tbody>";
 
-                            echo"
-                                <tr id=".$key['id_participation'].">
-                                    <td class='center'>".$key['titre']."</td>
-                                    <td class='center'>".$key['nom']." ".$key['prenom']."</td>
-                                    <td class='center'>".$key['date_demande']."</td>
+                            foreach ($formatedDatesPFD as $key) {
+
+                                echo "
+                                <tr id=" . $key['id_participation'] . ">
+                                    <td class='center'>" . $key['titre'] . "</td>
+                                    <td class='center'>" . $key['nom'] . " " . $key['prenom'] . "</td>
+                                    <td class='center'>" . $key['date_demande'] . "</td>
                                     <td class='del center'
-                                        id='".$key['id_participation']."'
+                                        id='" . $key['id_participation'] . "'
                                         document.getElementById('id')>
                                         <span id='myBtn' style='cursor:pointer; color:#F08714;'>X</span>
                                     </td>
                                 </tr>
                                 ";
-
+                            }
+                        }else{
+                            echo " <h1 class='invalid'>Vous n'avez aucune formation en attente de Validation</h1> ";
+                        }
                         ?>
                         </tbody>
                     </table>
@@ -94,22 +101,24 @@
         <div class="content three_quarter">
             <h1>Vos Formations validées :</h1>
             <div class="scrollable">
-                <table>
-                    <thead>
-                    <tr>
-                        <th class="center">Formation</th>
-                        <th class="center">Contenu</th>
-                        <th class="center">Adresse</th>
-                        <th class="center">Validée / Refusée le</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    $i=0;
+                <?php
+                $i=0;
+                if ($formatedDatesVFD) {
+                    echo "
+                    <table>
+                        <thead>
+                        <tr>
+                            <th class='center'>Formation</th>
+                            <th class='center'>Contenu</th>
+                            <th class='center'>Adresse</th>
+                            <th class='center'>Validée / Refusée le</th>
+                        </tr>
+                        </thead>
+                        <tbody>";
 
-                    foreach($formatedDatesVFD as $key )
-                        if ($key['state'] == 4) {
-                            echo "
+                        foreach ($formatedDatesVFD as $key) {
+                            if ($key['state'] == 4) {
+                                echo "
                                 <tr class='canceled' id=" . $key['id_participation'] . ">
                                     <td class='center'>" . $key['titre'] . "</td>
                                     <td class='center'>" . $key['contenu'] . "</td>
@@ -117,16 +126,22 @@
                                     <td class='center'>" . $key['date_validation'] . "</td>
                                 </tr>
                                 ";
-                        }else{
-                            echo "
-                                <tr class='validated' id=" . $key['id_participation'] . ">
-                                    <td class='center'>" . $key['titre'] . "</td>
-                                    <td class='center'>" . $key['contenu'] . "</td>
-                                    <td class='center'>" . $key['adresse_f'] . "</td>
-                                    <td class='center'>" . $key['date_validation'] . "</td>
-                                </tr>
-                                ";
+
+                            } else {
+                                echo "
+                                    <tr class='validated' id=" . $key['id_participation'] . ">
+                                        <td class='center'>" . $key['titre'] . "</td>
+                                        <td class='center'>" . $key['contenu'] . "</td>
+                                        <td class='center'>" . $key['adresse_f'] . "</td>
+                                        <td class='center'>" . $key['date_validation'] . "</td>
+                                    </tr>
+                                    ";
+                            }
                         }
+                    }else{
+                        echo " <h1 class='invalid'>Aucune formation validées à afficher</h1> ";
+
+                    }
                     ?>
                     </tbody>
                 </table>
@@ -210,29 +225,36 @@
             <h1>VOS FORMATIONS TERMINEES :</h1>
             <h1>Table(s)</h1>
             <div class="scrollable">
-                <table>
-                    <thead>
-                    <tr>
-                        <th class="center">Formation</th>
-                        <th class="center">Contenu</th>
-                        <th class="center">Date de Participation</th>
-                        <th class="center">Adresse</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    $i=0;
+                <?php
+                $i=0;
+                if ($formatedDateDFD) {
+                    echo "
+                    <table>
+                        <thead>
+                        <tr>
+                            <th class='center'>Formation</th>
+                            <th class='center'>Contenu</th>
+                            <th class='center'>Date de Participation</th>
+                            <th class='center'>Adresse</th>
+                        </tr>
+                        </thead>
+                        <tbody>";
 
-                    foreach($formatedDateDFD as $key )
+                        foreach ($formatedDateDFD as $key) {
 
-                        echo"
-                                <tr id=".$key['id_participation'].">
-                                    <td class='center'>".$key['titre']."</td>
-                                    <td class='center'>".$key['contenu']."</td>
-                                    <td class='center'>".$key['date_participation']."</td>
-                                    <td class='center'>".$key['adresse_f']."</td>
-                                </tr>
-                                ";
+                            echo "
+                                    <tr id=" . $key['id_participation'] . ">
+                                        <td class='center'>" . $key['titre'] . "</td>
+                                        <td class='center'>" . $key['contenu'] . "</td>
+                                        <td class='center'>" . $key['date_participation'] . "</td>
+                                        <td class='center'>" . $key['adresse_f'] . "</td>
+                                    </tr>
+                                    ";
+                        }
+                    }else{
+                    echo " <h1 class='invalid'>Vous n'avez encore participé à aucune formation</h1> ";
+
+                }
 
                     ?>
                     </tbody>
@@ -244,38 +266,43 @@
         <div id="Dublin" class="tabcontent">
             <div class="content three_quarter">
                 <h1>VALIDATION DES FORMATIONS :</h1>
-                <h1>Table(s)</h1>
                 <div class="scrollable">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th class="center">Formation</th>
-                            <th class="center">Demandeur</th>
-                            <th class="center">Date de la Formation</th>
-                            <th class="center">Validation</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        $i=0;
+                    <?php
+                    $i=0;
+                    if ($demandeurs) {
+                        echo "
+                        <table>
+                            <thead>
+                            <tr>
+                                <th class='center'>Formation</th>
+                                <th class='center'>Demandeur</th>
+                                <th class='center'>Date de la Formation</th>
+                                <th class='center'>Validation</th>
+                            </tr>
+                            </thead>
+                            <tbody>";
 
-                        foreach($demandeurs as $key )
+                            foreach ($demandeurs as $key) {
 
-                            echo"
-                                <tr id=".$key['id_participation'].">
-                                    <td class='center'>".$key['titre']."</td>
-                                    <td class='center'>".$key['nom']." ".$key['prenom']."</td>
-                                    <td class='center'>".$key['date_debut']."</td>
-                                    <td class='rep center'
-                                        id='".$key['id_participation']."'
-                                        document.getElementById('id')>
-                                        <ul class='nospace inline pushright'>
-                                            <li class='oui' id='true'><a class='btn'>valider</a></li>
-                                            <li class='non' id='false'><a class='btn'>refuser</a></li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                ";
+                                echo "
+                                    <tr id=" . $key['id_participation'] . ">
+                                        <td class='center'>" . $key['titre'] . "</td>
+                                        <td class='center'>" . $key['nom'] . " " . $key['prenom'] . "</td>
+                                        <td class='center'>" . $key['date_debut'] . "</td>
+                                        <td class='rep center'
+                                            id='" . $key['id_participation'] . "'
+                                            document.getElementById('id')>
+                                            <ul class='nospace inline pushright'>
+                                                <li class='oui' id='true'><a class='btn'>valider</a></li>
+                                                <li class='non' id='false'><a class='btn'>refuser</a></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    ";
+                            }
+                        }else{
+                            echo " <h1 class='invalid'>Vous n'avez aucune demande de validation d'inscription en attente</h1> ";
+                        }
 
                         ?>
                         </tbody>
@@ -287,11 +314,12 @@
     </main>
     </div>
 
-<div id="myModal" class="modal">
+
 
 
 
     <!--FENETRE ALERTE -->
+<div id="myModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
             <span class="close">&times;</span>
@@ -310,7 +338,6 @@
             <br>
         </div>
         <div class="modal-footer">
-            <h3>Modal Footer</h3>
         </div>
     </div>
 </div>

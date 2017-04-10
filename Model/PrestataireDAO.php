@@ -9,6 +9,17 @@ function getPrestatireById($id){
     return $formation;
 }
 
+/**
+ * @return array
+ */
+function getAllPrestataire(){
+    $key = connector();
+    $query = $key->prepare('SELECT * FROM prestataire');
+    $query->execute();
+    $presta = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    return $presta;
+}
 
 
 

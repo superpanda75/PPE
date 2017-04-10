@@ -8,10 +8,10 @@ class Formation
     private $_duree;
     private $_image;
     private $_NbPlace;
-    private $_typeFormation; //TODO: c'est la catégorie de la formation, on récupèrera l'id;
-    private $_prestataire; //TODO: Ici on récupèrera l'id du prestataire puis à partir de cet ID nous ferons les traitements nécessaires
-    private $_adresse; //TODO: de même nous partirons de l'ID de l'adresse;
-    private $_contenu;//TODO: ce sera un tableau ou les commentaires seront triés par date décroissantes (du + récent au + ancien;
+    private $_typeFormation; //TODO: c'est la catÃ©gorie de la formation, on rÃ©cupÃ¨rera l'id;
+    private $_prestataire; //TODO: Ici on rÃ©cupÃ¨rera l'id du prestataire puis Ã  partir de cet ID nous ferons les traitements nÃ©cessaires
+    private $_adresse; //TODO: de mÃªme nous partirons de l'ID de l'adresse;
+    private $_contenu;//TODO: ce sera un tableau ou les commentaires seront triÃ©s par date dÃ©croissantes (du + rÃ©cent au + ancien;
 
     /**
      * Formation constructor.

@@ -33,7 +33,7 @@ if (isset($_GET['a']) && $_GET['a']=="logout"){
 /**
  * Dans un premier temps nous verifions si les champs ont bien �t� remplis
  */
-if(isset($_POST['submit'])) {
+if(isset($_POST['identifiant']) && isset($_POST['password'])) {
 
     $user = connect($_POST['identifiant'], $_POST['password']);
 

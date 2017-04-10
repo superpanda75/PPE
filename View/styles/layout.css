@@ -15,6 +15,10 @@ File: Layout CSS
 /*ADDED for M2L
 --------------------------------------------------------------------------------------------------------------- */
 /*VALIDATED / REFUSED */
+.ins_cont{
+  color :#141F35;
+}
+
 .canceled{
   background-color: #F08714;
   color: #FFFFFF;
@@ -80,9 +84,10 @@ File: Layout CSS
 }
 
 /* Modal Body */
-.modal-body {padding: 2px 16px;
-             background-color: #141F35;
-            color: #FFFFFF;
+.modal-body {
+  padding: 2px 16px;
+  background-color: #141F35;
+  color: #FFFFFF;
 }
 
 /* Modal Footer */

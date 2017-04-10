@@ -63,4 +63,16 @@ function getTypeById($id){
 
     return $formation;
 }
+
+/**
+ * @return array
+ */
+function getFormationTypes(){
+    $key = connector();
+    $query = $key->prepare('SELECT * FROM type_formation');
+    $query->execute();
+    $formationTypes = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    return $formationTypes;
+}
 ?>

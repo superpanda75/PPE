@@ -17,7 +17,7 @@ function getUserById($id){
 
 function getUserByLogin($login,$password){
     $key = connector();
-    $query= $key->prepare('SELECT * FROM salarie
+    $query=$key->prepare('SELECT * FROM salarie
                            WHERE (identifiant =:identifiant OR email=:email)
                            AND password=:password');
     $query->bindParam(':email',$login,PDO::PARAM_STR);

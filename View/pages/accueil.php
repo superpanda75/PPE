@@ -1,3 +1,6 @@
+<?php require 'Model/connect.php';
+var_dump($_SESSION);
+?>
 <div class="bgded overlay" style="background-image:url('<?=BASE_URL?>/View/images/demo/backgrounds/01.png');">
     <div id="pageintro" class="hoc clear">
         <!-- ################################################################################################ -->

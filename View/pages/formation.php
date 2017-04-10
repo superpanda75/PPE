@@ -37,22 +37,21 @@
             <!-- ################################################################################################ -->
             <div id="gallery">
                 <figure>
-                    <h1 class="center">Voici les formations disponibles à venir :</h1>
-                    <header class="heading ">Votre solde : <?php echo $_SESSION['curr_user'][0]['credit']; ?> credits</header>
+                    <h1 class="center">Résultats de la recherche :</h1>
                     <ul class="nospace clear">
                         <?php
                         $i=0;
                         foreach ($openFormations as $formation) {
                             if ($i%4 == 0){
-                                echo "<li class='one_quarter first'><a href='".BASE_URL."/FormationDetailController&f=".$formation->getId()."'><img src='".BASE_URL."/".$formation->getImage()."' alt=''></a></li>";
+                                echo "<li class='one_quarter first'><a href='".BASE_URL."/FormationDetailController&f=".$formation->getId()."'><img src='".BASE_URL."/".$formation->getImage()."' alt=''><p class='center'>".$formation->getTitre()."</p></a></li>";
                             }else {
-                                echo "<li class='one_quarter'><a href='".BASE_URL."/FormationDetailController&f=".$formation->getId()."'><img src='".BASE_URL."/".$formation->getImage()."' alt=''></a></li>";
+                                echo "<li class='one_quarter'><a href='".BASE_URL."/FormationDetailController&f=".$formation->getId()."'><img src='".BASE_URL."/".$formation->getImage()."' alt=''><p class='center'>".$formation->getTitre()."</p></a></li>";
                             }
                             $i++;
                         }
                         ?>
                     </ul>
-                    <figcaption>Gallery Description Goes Here</figcaption>
+                    <figcaption>Les formations affichées sont les formations auxquelles vous n'avez kamais participé</figcaption>
                 </figure>
             </div>
             <!-- ################################################################################################ -->

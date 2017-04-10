@@ -19,11 +19,20 @@ if(isset($_SESSION['connecte'])){
 else{
 	$_GET['page']='loginController';
 }
-ob_start();
-	include "Controller/".$_GET['page'].".php";
-	$contenu = ob_get_contents();
-ob_end_clean();
-require "View/pages/layout.php";
 
+if($_GET['page']!='adminFormController') {
+	ob_start();
+	include "Controller/" . $_GET['page'] . ".php";
+	$contenu = ob_get_contents();
+	ob_end_clean();
+}
+
+
+elseif($_GET['page']=='adminFormController'){
+	require "Controller/adminFormController.php";
+}
+elseif($_GET['page']!='contactController' && $_GET['page']!='adminFormController'){
+	require "View/pages/layout.php";
+}
 
 ?>
