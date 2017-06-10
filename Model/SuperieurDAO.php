@@ -6,7 +6,7 @@
  * @return array
  */
 function getLeaders($id){
-    $key = new PDO('mysql:host=localhost;dbname=m2l','root','');
+    $key = connector();
     $query= $key->prepare('SELECT *
                            FROM salarie sa
                            JOIN superieur su ON sa.id_s = su.id_c
@@ -27,6 +27,18 @@ function getDemandeur($idUser){
                             AND state = 1
                             ORDER BY date_demande ASC');
     $query->bindParam(':salarie', $idUser, PDO::PARAM_INT);
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+}
+
+function getTeam($idLeader){
+    $key = connector();
+
+    $query = $key->prepare('SELECT id_s
+                            FROM superieur
+                            WHERE id_c = :chef');
+    $query->bindParam(':chef', $idLeader, PDO::PARAM_INT);
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     return $result;

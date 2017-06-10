@@ -11,9 +11,10 @@ class Salarie
     private $_photo;
     private $_identifiant;
     private $_password;
-    private $_status; //TODO: 0 : admin, 1 : salarie, 2 : chef
+    private $_status;
     private $_credit;
     private $_nbJour;
+    private $_adresse;
 
     public function __construct($id,
                                 $nom,
@@ -24,7 +25,8 @@ class Salarie
                                 $password,
                                 $status,
                                 $credit,
-                                $nbJour)
+                                $nbJour,
+                                $adresse = null)
     {
         $this->setId($id);
         $this->setNom($nom);
@@ -36,6 +38,7 @@ class Salarie
         $this->setStatus($status);
         $this->setCredit($credit);
         $this->setNbJour($nbJour);
+        $this->setAdresse($adresse);
     }
 
     /**
@@ -198,9 +201,21 @@ class Salarie
         $this->_nbJour = $nbJour;
     }
 
+    /**
+     * @return int
+     */
+    public function getAdresse()
+    {
+        return $this->_adresse;
+    }
 
-
-
+    /**
+     * @param int $adresse
+     */
+    public function setAdresse($adresse)
+    {
+        $this->_adresse = $adresse;
+    }
 }
 
 ?>

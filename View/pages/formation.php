@@ -1,14 +1,5 @@
 <div class="wrapper row2">
-    <div id="breadcrumb" class="hoc clear">
-        <!-- ################################################################################################ -->
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Lorem</a></li>
-            <li><a href="#">Ipsum</a></li>
-            <li><a href="#">Dolor</a></li>
-        </ul>
-        <!-- ################################################################################################ -->
-    </div>
+
     <?php
     if (isset($result)) {
         if ($result == 'La demande d\'inscription a bien été envoyée !') {
@@ -51,7 +42,7 @@
                         }
                         ?>
                     </ul>
-                    <figcaption>Les formations affichées sont les formations auxquelles vous n'avez kamais participé</figcaption>
+                    <figcaption>Les formations affichées sont les formations auxquelles vous n'avez jamais participé</figcaption>
                 </figure>
             </div>
             <!-- ################################################################################################ -->

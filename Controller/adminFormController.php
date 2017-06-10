@@ -1,7 +1,8 @@
 <?php
 require 'Model/connect.php';
-require 'Model/adminFormDAO.php';
+require 'Model/FormationDAO.php';
 require 'corps/formation.php';
+
 
 function safe($var)
 {
@@ -10,6 +11,11 @@ function safe($var)
     $var = htmlspecialchars($var);
     return $var;
 }
+
+/**
+ * @param $chaine
+ * @return array|null
+ */
 function findFormation($chaine)
 {
         $result = search(safe($chaine));
@@ -55,12 +61,44 @@ function findFormation($chaine)
 }
 // appel à la fonction si q est bien envoyé en ajax (q étant la chaine tapée par l'utilisateur dans le champ
 // de recherche
-if (isset ($_GET['q'])) {
-    $formations = findFormation($_GET['q']);
-
+function makeFormations()
+{
+    if ($datas = getAllFormations()) {
+        $Formations = array();
+        foreach ($datas as $index) {
+            $formation = new Formation(
+                $index['id_f'],
+                $index['titre'],
+                $index['cout'],
+                $index['date_debut']= date( 'd-m-Y H:i', strtotime( $index['date_debut'] )),
+                $index['duree'],
+                $index['image'],
+                $index['nb_place'],
+                $index['type_f'],
+                $index['prestataire_f'],
+                $index['adresse_f'],
+                $index['contenu']
+            );
+            array_push($Formations,$formation);
+        }
+        return $Formations;
+    } else {
+        return null;
+    }
 }
 
+
+    $Formations = makeFormations();
+
+
+
+
+if (isset ($_GET['q'])) {
+    $formationsToShow = findFormation($_GET['q']);
+
+}
 if (!isset($_GET['vue'])) {
+    header( 'content-type: text/html; charset=utf-8' );
     require('View/pages/adminF.php');
 }
 ?>

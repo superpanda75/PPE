@@ -40,11 +40,10 @@ function getPendingFormationsDatas($idSalarie){
     $key = connector();
 
     $query = $key->prepare('SELECT *
-                            FROM formation f
-                            JOIN participer p on p.id_formation = f.id_f
-                            JOIN salarie s on s.id_s = p.id_validateur
-                            WHERE id_salarie =:salarie
-                            AND state = 1
+                            FROM formation f, participer p
+                            WHERE p.id_salarie = :salarie
+                            AND p.state = 1
+                            and p.id_formation = f.id_f
                             ORDER BY date_demande ASC');
     $query->bindParam(':salarie', $idSalarie, PDO::PARAM_INT);
     $query->execute();
@@ -56,12 +55,11 @@ function getValidatedFormationsDatas($idSalarie){
     $key = connector();
 
     $query = $key->prepare('SELECT *
-                            FROM formation f
-                            JOIN participer p on p.id_formation = f.id_f
-                            JOIN salarie s on s.id_s = p.id_validateur
-                            WHERE id_salarie =:salarie
-                            AND state = 2 OR state = 4
-                            ORDER BY date_demande ASC');
+                            FROM formation f, participer p
+                            WHERE p.id_salarie =:salarie
+                            AND p.state = 2
+                            and p.id_formation = f.id_f
+                            ORDER BY date_validation ASC');
     $query->bindParam(':salarie', $idSalarie, PDO::PARAM_INT);
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -72,12 +70,11 @@ function getDoneFormationsDatas($idSalarie){
     $key = connector();
 
     $query = $key->prepare('SELECT *
-                            FROM formation f
-                            JOIN participer p on p.id_formation = f.id_f
-                            JOIN salarie s on s.id_s = p.id_validateur
-                            WHERE id_salarie =:salarie
-                            AND state = 3
-                            ORDER BY date_demande ASC');
+                            FROM formation f, participer p
+                            WHERE p.id_salarie =:salarie
+                            AND p.state = 3
+                            and p.id_formation = f.id_f
+                            ORDER BY date_participation ASC');
     $query->bindParam(':salarie', $idSalarie, PDO::PARAM_INT);
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -115,7 +112,6 @@ function getValidators($idSalarie){
 
 function deleteParticipation($idParticipation){
     $key = connector();
-
     $query = $key->prepare('DELETE FROM participer
                             WHERE id_participation=:participation');
     $query->bindParam(':participation', $idParticipation, PDO::PARAM_INT);
@@ -133,17 +129,7 @@ function  validateFormation($idParticipation, $status = 2){
     $query->bindParam(':state',$status,PDO::PARAM_INT);
     return $query->execute();
 }
-/*
- * UPDATE salarie s, participer p
-                           SET s.credit = s.credit + (
-                                                   SELECT cout
-                                                   FROM formation
-                                                   WHERE id_f =:idFormation
-                                                      )
-                           WHERE  s.id_s = p.id_salarie
-                           AND p.id_salarie =:idUser
-                           AND s.id_s =:idUser
- */
+
 function  declineFormation($idParticiper){
     $key = connector();
     $query= $key->prepare('SELECT f.id_f, f.cout, f.duree, p.id_salarie

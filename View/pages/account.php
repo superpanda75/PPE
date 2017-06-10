@@ -13,21 +13,20 @@
                         </ul>
                     </li>
                     <?php if ($_SESSION['curr_user'][0]['status'] > 1){ ?>
-                    <li><a href="#">Gestion</a>
+                    <li><a href="#">Gestion Chef d'équipe</a>
                         <ul>
-                            <li class="tablinks"  onclick="openCity(event, 'Dublin')"><a>Gestion des formations</a></li>
-                            <li class="tablinks"  onclick="openCity(event, 'Singapour')"><a>Gestion des équipes</a></li>
-                            <li class="tablinks"  ><a href="<?=BASE_URL?>/adminFormController">Gestion des FROMATIONS ADMIN</a></li>
-                            <ul>
-                                <li><a href="#">Modifier une équipe</a></li>
+                            <li class="tablinks"  onclick="openCity(event, 'Dublin')"><a>Validation des formations</a></li>
+                                <li><a href="<?=BASE_URL?>/myTeamController">Modifier mon équipe</a></li>
                                 <li><a href="#">Créer une nouvelle équipe</a></li>
-                                <li><a href="<?= BASE_URL ?>/contactController">M2L-Contact</a></li>
-                            </ul>
-
-
-
                         </ul>
                     </li>
+                    <li><a href="#">Gestion Administrateur</a>
+                        <ul>
+                            <li class="tablinks"  ><a href="<?=BASE_URL?>/adminSalarieController"> Gestion des SALARIÉS ADMIN</a></li>
+                            <li class="tablinks"  ><a href="<?=BASE_URL?>/adminFormController">Gestion des FROMATIONS ADMIN</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="<?=BASE_URL?>/chatController">Contact</a></li>
                     <?php } ?>
 
                 </ul>
@@ -303,16 +302,14 @@
                         }else{
                             echo " <h1 class='invalid'>Vous n'avez aucune demande de validation d'inscription en attente</h1> ";
                         }
-
                         ?>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-
     </main>
-    </div>
+</div>
 
 
 
@@ -323,7 +320,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <span class="close">&times;</span>
-            <h2>Annulation de damande de formation</h2>
+            <h2>Annulation de demande de formation</h2>
         </div>
         <div class="modal-body">
             <p>Vous êtes sur le point d'annuler la demande à cette formation.</p>

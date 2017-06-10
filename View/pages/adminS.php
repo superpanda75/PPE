@@ -1,4 +1,3 @@
-<?php header( 'content-type: text/html; charset=utf-8' ); ?>
 <!DOCTYPE html>
 <!--
 Template Name: Cytocean
@@ -15,7 +14,8 @@ Licence URI: http://www.os-templates.com/template-terms
     <link id="stylesheet" href="<?=BASE_URL?>/View/styles/layout.css" rel="stylesheet" type="text/css" media="all">
     <script>
         function swapStyleSheet(sheet){
-            document.getElementById('stylesheet').setAttribute('href', sheet);        }
+            document.getElementById('stylesheet').setAttribute('href', sheet);
+        }
     </script>
 
 </head>
@@ -96,12 +96,11 @@ Licence URI: http://www.os-templates.com/template-terms
 
 <form class="ajax" action="adminF.php" method="get">
     <p>
-        <h1><label for="q">Rechercher une formation</label></h1>
-        <input value="" type="text" name="q" id="q" />
+    <h1><label for="q">Rechercher un utilisateur</label></h1>
+    <input value="" type="text" name="q" id="q" />
     </p>
 </form>
 <!--fin du formulaire-->
-
 <div style="display: none" id="row2" class="wrapper row2">
     <main class="hoc container clear">
         <div class="content">
@@ -125,22 +124,31 @@ Licence URI: http://www.os-templates.com/template-terms
         <div class="content">
             <!-- ################################################################################################ -->
             <div id="gallery">
+                <?php
+                if (isset($_GET['status'])){
+                    if ($_GET['status']=='done'){
+                        echo "<div class='alert alert-success center'>La modifiaction a bien été effectuée !</div>";
+                    }
+                    else{
+                        echo "<div class='alert alert-error center'>".$_SESSION['sEditError'].", la modification n'a pas été prise en compte</div>";
+                    }
+                }
+                ?>
                 <figure>
-                    <h1 class="center">40 Prochaines formations à venir :</h1>
+                    <h1 class="center">Utilisateurs :</h1>
                     <ul class="nospace clear">
                         <?php
                         $i=0;
-                        foreach ($Formations as $formation) {
+                        foreach ($Salaries as $salarie) {
                             if ($i%4 == 0){
-                                echo "<li class='one_quarter first'><a href='".BASE_URL."/editFormController&f=".$formation->getId()."'><img src='".BASE_URL."/".$formation->getImage()."' alt=''><p class='center'>".$formation->getTitre()."</p></a></li>";
+                                echo "<li class='one_quarter first'><a href='".BASE_URL."/editSalarieController&s=".$salarie->getId()."'><img src='".BASE_URL."/".$salarie->getPhoto()."' width='600' height='400'/><p class='center'>".$salarie->getNom()." ".$salarie->getPrenom()."</p></a></li>";
                             }else {
-                                echo "<li class='one_quarter'><a href='".BASE_URL."/editFormController&f=".$formation->getId()."'><img src='".BASE_URL."/".$formation->getImage()."' alt=''><p class='center'>".$formation->getTitre()."</p></a></li>";
+                                echo "<li class='one_quarter'><a href='".BASE_URL."/editSalarieController&s=".$salarie->getId()."'><img src='".BASE_URL."/".$salarie->getPhoto()."' width='600' height='400'/><p class='center'>".$salarie->getNom()." ".$salarie->getPrenom()."</p></a></li>";
                             }
                             $i++;
                         }
                         ?>
                     </ul>
-                    <figcaption>Les formations affichées sont les formations auxquelles vous n'avez jamais participé</figcaption>
                 </figure>
             </div>
             <!-- ################################################################################################ -->
@@ -240,10 +248,9 @@ Licence URI: http://www.os-templates.com/template-terms
 <script src="<?=BASE_URL?>/View/js/jquery-3.2.0.min.js"></script>
 <script src="<?=BASE_URL?>/View/js/jquery.backtotop.js"></script>
 <script src="<?=BASE_URL?>/View/js/jquery.mobilemenu.js"></script>
+
 <script>
     $(document).ready( function() {
-
-
         // détection de la saisie dans le champ de recherche
         $('#q').keyup( function(){
 
@@ -260,13 +267,13 @@ Licence URI: http://www.os-templates.com/template-terms
                 // on envoie la valeur recherché en GET au fichier de traitement
                 $.ajax({
                     type : 'GET', // envoi des données en GET ou POST
-                    url : '<?= BASE_URL ?>/adminFormController', // url du fichier de traitement
+                    url : '<?= BASE_URL ?>/adminSalarieController', // url du fichier de traitement
                     data : { q: $(this).val(),
-                            vue: 'true'
-                        },// données à envoyer en  GET ou POST
+                        vue: 'true'
+                    },// données à envoyer en  GET ou POST
 
                     beforeSend : function() { // traitements JS à faire AVANT l'envoi
-                        $field.after('<img src="<?= BASE_URL ?>View/images/loader.gif" alt="loader" id="ajax-loader" />');
+                        $field.after('<img src="<?= BASE_URL ?>/View/images/loader.gif" alt="loader" id="ajax-loader"/>');
                     },
                     success : function(data){ // traitements JS à faire APRES le retour d'ajax-search.php
                         $('#ajax-loader').remove(); // on enleve le loader

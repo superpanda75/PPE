@@ -14,6 +14,86 @@ File: Layout CSS
 
 /*ADDED for M2L
 --------------------------------------------------------------------------------------------------------------- */
+/* navs from bootstrap */
+.nav {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none
+}
+
+.nav > li {
+  position: relative;
+  display: block
+}
+
+.nav > li > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+  text-decoration: none;
+  background-color: #eee
+}
+
+.nav > li.disabled > a {
+  color: #777
+}
+
+.nav > li.disabled > a:focus, .nav > li.disabled > a:hover {
+  color: #777;
+  text-decoration: none;
+  cursor: not-allowed;
+  background-color: transparent
+}
+
+.nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+  background-color: #eee;
+  border-color: #337ab7
+}
+
+.nav .nav-divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5
+}
+
+.nav > li > a > img {
+  max-width: none
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #ddd
+}
+
+.nav-tabs > li {
+  float: left;
+  margin-bottom: -1px
+}
+
+.nav-tabs > li > a {
+  margin-right: 2px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0
+}
+
+.nav-tabs > li > a:hover {
+  border-color: #eee #eee #ddd
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+  color: #555;
+  cursor: default;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent
+}
+
+
+
 /*VALIDATED / REFUSED */
 .ins_cont{
   color :#141F35;
@@ -37,8 +117,49 @@ File: Layout CSS
   color: #FFFFFF;
 }
 
+/*ALERTES BOOTSTRAP*/
+.alert {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 18px;
+  color: #c09853;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
 
-/*ALERT*/
+.alert-heading {
+  color: inherit;
+}
+
+.alert .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  line-height: 18px;
+}
+
+.alert-success {
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.alert-danger,
+.alert-error {
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+}.alert-danger,
+ .alert-error {
+   color: #b94a48;
+   background-color: #f2dede;
+   border-color: #eed3d7;
+ }
+
+/*MODAL*/
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -1021,7 +1142,7 @@ div.tab button.active {
 
 #footer input, #footer button{border:1px solid; border-radius:22px;}
 #footer input{display:block; width:100%; padding:8px 15px;}
-#footer button{padding:8px 18px 10px; text-transform:uppercase; font-weight:700; cursor:pointer;}
+#footer button{padding:8px 18px 10px; font-weight:700; cursor:pointer;}
 
 
 /* Copyright

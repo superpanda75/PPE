@@ -14,7 +14,7 @@ function getPrestatireById($id){
  */
 function getAllPrestataire(){
     $key = connector();
-    $query = $key->prepare('SELECT * FROM prestataire');
+    $query = $key->prepare('SELECT * FROM prestataire ORDER BY nom');
     $query->execute();
     $presta = $query->fetchAll(PDO::FETCH_ASSOC);
 

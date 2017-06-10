@@ -87,15 +87,6 @@ if (isset($_POST['x']) && $_POST['x']=="checkRegister"){
         intval($_POST['formation'])
     );
 }
-
 $openFormations = openFormations();
-
-
-
-
-
-
-
-
 require ('View/pages/formation.php')
 ?>

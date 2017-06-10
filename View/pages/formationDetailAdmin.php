@@ -35,21 +35,12 @@
             <h2>Modification de la formation :  <?php echo $formation->getTitre(); ?> </h2>
         </div>
         <div class="modal-body">
-
-            <!--
-            $index['titre'],
-                    $index['cout'],
-                    $index['date_debut'],
-                    $index['duree'],
-                    $index['image'],
-                    $index['nb_place'],
-                    $index['type_f'],
-                    $index['prestataire_f'],
-                    $index['adresse_f'],
-                    $index['contenu']
-            -->
-            <form method="post" action="<?=BASE_URL?>/editFormController">
+            <form method="post" action="<?=BASE_URL?>/editFormController" enctype="multipart/form-data">
                 <ul>
+                    <li style="display: none">
+                        <input type="number" name="id" value="<?php echo $formation->getId(); ?>">
+
+                    </li>
                     <li>
                         <label for="titre">titre de la formation :</label>
                         <input class="btn" type="text" name="titre" id="titre" value="<?php echo $formation->getTitre(); ?>" placeholder="<?php echo $formation->getTitre(); ?>">
@@ -61,6 +52,7 @@
                     <li>
                         <label for="date">date de la formation :</label>
                         <input class="btn" type="text" name="date" id="date" value="<?php echo $formation->getDateDebut(); ?>" placeholder="<?php echo $formation->getDateDebut(); ?>">
+                        <p>(au format jj-mm-aaaa hh:min)</p>
                     </li>
                     <li>
                         <label for="duree">durée de la formation :</label>
@@ -78,10 +70,16 @@
                                 echo "<option value='".$index['id_t']."'>".$index['type']."</option>";
                             } ?>
                         </select>
+                        <p>Type initial : <?php echo $type[0]['type'] ?></p>
                     </li>
                     <li>
                         <label for="contenu">contenu de la formation :</label>
-                        <textarea class="ins_cont" name="contenu" id="contenu" placeholder="<?php echo $formation->getContenu(); ?>" cols="40" rows="10"></textarea>
+                        <textarea class="ins_cont" name="contenu" id="contenu" cols="40" rows="10" required><?php echo $formation->getContenu(); ?></textarea>
+                    </li>
+                    <li>
+                        <label for="fileToUpload">Image principale de la formation : </label>
+                    <input type="file" name="fileToUpload" id="fileToUpload">
+
                     </li>
                     <li>
                         <label for="presta">prestataire de la formation :</label>
@@ -127,6 +125,7 @@
             <h1 class="center"> M2L </h1>
         </div>
     </div>
+</div>
 </div>
     <!--MODAL -->
     <script
@@ -192,7 +191,7 @@
                 document.getElementById('true').style.display='none';
             }
         }).fail(function (error) {
-
+                alert('une erreur est survenue lors de la modification, merci de contacter l\'assistance');
         });
     })
 </script>

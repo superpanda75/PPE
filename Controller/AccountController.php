@@ -27,6 +27,10 @@ if (isset($_POST['idV']) && isset($_POST['reponse'])){
     }
 }
 
+function deleteParticiper($idParticipation){
+    deleteParticipation($idParticipation);
+}
+
 function makePendingFormationsInfos($idUser){
     return getPendingFormationsDatas($idUser);
 }
@@ -74,8 +78,6 @@ if ($_SESSION['curr_user'][0]['status']>1){
     }
 }
 
-function deleteParticiper($idParticipation){
-    deleteParticipation($idParticipation);
-}
+
 require ('View/pages/account.php')
 ?>
