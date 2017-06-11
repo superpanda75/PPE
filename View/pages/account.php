@@ -15,8 +15,8 @@
                     <?php if ($_SESSION['curr_user'][0]['status'] > 1){ ?>
                     <li><a href="#">Gestion Chef d'équipe</a>
                         <ul>
-                            <li class="tablinks"  onclick="openCity(event, 'Dublin')"><a>Validation des formations</a></li>
-                                <li><a href="<?=BASE_URL?>/myTeamController">Modifier mon équipe</a></li>
+                            <li id="validation" class="tablinks"  onclick="openCity(event, 'Dublin')"><a>Validation des formations</a></li>
+                                <li><a href="<?=BASE_URL?>/myTeamController">Mon équipe</a></li>
                                 <li><a href="#">Créer une nouvelle équipe</a></li>
                         </ul>
                     </li>
@@ -459,3 +459,13 @@
     })
 
 </script>
+
+<?php
+if (isset($_GET['City']) == 'Dublin'){
+    echo "<script>
+            jQuery(function(){
+   jQuery('#validation').click();
+});
+           </script>";
+}
+?>

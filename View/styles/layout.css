@@ -14,7 +14,45 @@ File: Layout CSS
 
 /*ADDED for M2L
 --------------------------------------------------------------------------------------------------------------- */
+
 /* navs from bootstrap */
+
+#bgQCQ{
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
+}
+
+
+
+.NomEquipier{
+  background-color: #283F6C ;
+}
+
+.enteteAValider{
+  background-color: #F08714;
+}
+
+.enteteValide{
+  background-color: #4CAF50;
+}
+
+.enteteEffectuee{
+  background-color: #005544;
+}
+
+.tableNoBorderNomargin{
+  border: 0 solid;
+  margin-bottom: 0px;
+}
+.tableNoBorderButMargin{
+  margin-top: 12px;
+}
+
 .nav {
   padding-left: 0;
   margin-bottom: 0;

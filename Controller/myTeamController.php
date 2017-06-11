@@ -94,23 +94,37 @@ function getMatesFormationsInfos(array $teamIds)
 
 function getMateInfo($mateId){
     $mateFormationInfo = array();
-    $pendingFormations = array();
-    $validatedFormations = array();
-    $doneFormations = array();
+
+    foreach ($mateId as $id) {
+        $strId = strval($id);
+        $mateFormationInfo[$strId] = array();
+        $mateFormationInfo[$strId]['pending'] = array();
+        $mateFormationInfo[$strId]['validated'] = array();
+        $mateFormationInfo[$strId]['done'] = array();
+
 
         //demandes de validation
-        $pFormations = getPendingFormationsDatas($mateId);
-        array_push($pendingFormations, $pFormations);
-
+        $pFormations = getPendingFormationsDatas($id);
+        foreach($pFormations as $formP) {
+            $formP['date_demande'] = date( 'd/m/Y à H:i', strtotime( $formP['date_demande'] ) );
+            $formP['date_debut'] = date( 'd/m/Y à H:i', strtotime( $formP['date_debut'] ) );
+            array_push($mateFormationInfo[$id]['pending'], $formP);
+        }
         //validées
-        $vFormations = getValidatedFormationsDatas($mateId);
-        array_push($validatedFormations, $vFormations);
-
+        $vFormations = getValidatedFormationsDatas($id);
+            foreach ($vFormations as $formV) {
+                $formV['date_validation'] = date('d/m/Y à H:i', strtotime($formV['date_validation']));
+                $formV['date_debut'] = date('d/m/Y à H:i', strtotime($formV['date_debut']));
+                array_push($mateFormationInfo[$id]['validated'], $formV);
+            }
         //effectuées
-        $dFormations = getDoneFormationsDatas($mateId);
-        array_push($doneFormations, $dFormations);
-
-    array_push($mateFormationInfo, $pendingFormations, $validatedFormations, $doneFormations);
+        $dFormations = getDoneFormationsDatas($id);
+        foreach($dFormations as $formE) {
+            $formE['date_participation'] = date( 'd/m/Y à H:i', strtotime( $formE['date_participation'] ) );
+            $formE['date_debut'] = date( 'd/m/Y à H:i', strtotime( $formE['date_debut'] ) );
+            array_push($mateFormationInfo[$id]['done'], $formE);
+        }
+    }
 
     return $mateFormationInfo;
 }
@@ -125,14 +139,11 @@ $teamIds = array();
 foreach ($teamInfos as $mateInfo){
     array_push($teamIds,$mateInfo->getId());
 }
-
-//Contient les différents noms des div
-$myDivs = ['Paris','Tunis','Dublin','Pekin','Mexico','LosAngeles','Washington','Moscou'];
-var_dump($myDivs);
+//contient les infos formations
+$formationsInfos = getMateInfo($teamIds);
 
 
-
-//réponse ajax
+/*//réponse ajax
 if (isset($_POST['mate'])) {
     $id = (intval($_POST['mate']) / 999);
 
@@ -151,7 +162,7 @@ if (isset($_POST['mate'])) {
             var_dump($sal);
         }
     }
-}
+}*/
 
 
     require('View/pages/myTeam.php');

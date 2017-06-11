@@ -47,8 +47,7 @@ function getPendingFormationsDatas($idSalarie){
                             ORDER BY date_demande ASC');
     $query->bindParam(':salarie', $idSalarie, PDO::PARAM_INT);
     $query->execute();
-    $result = $query->fetchAll(PDO::FETCH_ASSOC);
-    return $result;
+    return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function getValidatedFormationsDatas($idSalarie){
@@ -95,6 +94,8 @@ function getPendingStatus($idSalarie)
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     return $result;
 }
+
+
 
 function getValidators($idSalarie){
     $key = connector();
