@@ -98,8 +98,8 @@ Licence URI: http://www.os-templates.com/template-terms
                 <?php } if ($_SESSION['curr_user'][0]['status'] == 3){ ?>
                 <li><a class="drop" href="#">ADMIN</a>
                     <ul>
-                        <li><a href="<?=BASE_URL?>/FormationController">Gestion des salariés</a></li>
-                        <li><a href="<?=BASE_URL?>/full-widthController">Gestion des formations</a></li>
+                        <li><a href="<?=BASE_URL?>/adminSalarieController">Gestion des salariés</a></li>
+                        <li><a href="<?=BASE_URL?>/adminFormController">Gestion des formations</a></li>
 
                     </ul>
                 </li>

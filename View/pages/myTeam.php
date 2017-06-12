@@ -38,10 +38,9 @@
     </main>
 </div>
 <?php
-
+/*var_dump($teamInfos);*/
 $c = 0;
 foreach ($teamInfos as $salarie) {
-
     $adresse = getAdressebyId($salarie->getAdresse());
     $adressString = $adresse[0]['numero_rue'] . " "
         . $adresse[0]['rue'] . ", "
@@ -86,8 +85,6 @@ foreach ($teamInfos as $salarie) {
                         </tr>
                     </thead>
                 </table>
-                ";
-        echo "
             <div id='demande".$c."' style='display : none;'>
                 <table style='margin-bottom: 0px;'>
                         <thead>
@@ -119,8 +116,9 @@ foreach ($teamInfos as $salarie) {
 
          ";
         }
+        echo "</div>";
     }
-    echo "</div>";
+
     if (sizeof($formationsInfos[$salarie->getId()]['validated'])> 0) {
 
         echo "
@@ -131,9 +129,7 @@ foreach ($teamInfos as $salarie) {
                         </tr>
                     </thead>
                 </table>
-         ";
-
-        echo "    <div id='valide".$c."' style='display : none;'>
+            <div id='valide".$c."' style='display : none;'>
                     <table style='margin-bottom: 0px;'>
                         <thead>
                             <tr>
@@ -163,8 +159,9 @@ foreach ($teamInfos as $salarie) {
                     </table>
                 ";
         }
+        echo "</div>";
     }
-    echo "</div>";
+;
 
     if (sizeof($formationsInfos[$salarie->getId()]['done'])> 0) {
 
@@ -195,7 +192,6 @@ foreach ($teamInfos as $salarie) {
                     <table style='margin-bottom: 0px;'>
                         <thead>
                             <tbody>
-
                                 <tr>
                                     <td class=center style='width: 20%'><a target='_blank' href='".BASE_URL."/maFormationPDF?F=".$formation['id_f']."'>" . $formation['titre'] . "</a></td>
                                     <td class=center style='width: 30%'>" . $formation['contenu'] . "</td>
@@ -208,16 +204,19 @@ foreach ($teamInfos as $salarie) {
                         </thead>
                     </table>
                 </table>
-            </div>
                 ";
         }
+        echo "</div>";
+
     }
-
-
     $c++;
+    echo "</div>";
+
+
 }
 
 
+//var_dump($formationsInfos[44]['done']);
 
 
 
@@ -283,10 +282,10 @@ foreach ($teamInfos as $salarie) {
      * @param type
      */
     function afficherCacher(type){
-        if (document.getElementById(type).style.display == 'block') {
-            document.getElementById(type).style.display = 'none';
-        } else {
-            document.getElementById(type).style.display = 'block';
-        }
-    }
+     if (document.getElementById(type).style.display == 'block') {
+     document.getElementById(type).style.display = 'none';
+     } else {
+     document.getElementById(type).style.display = 'block';
+     }
+     }
 </script>
