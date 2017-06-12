@@ -21,7 +21,7 @@ else{
 }
 
 
-if($_GET['page']!='adminFormController' && $_GET['page'] != 'adminSalarieController') {
+if($_GET['page']!='adminFormController' && $_GET['page'] != 'adminSalarieController' && $_GET['page']!='maFormationPDF') {
 	ob_start();
 	include "Controller/" . $_GET['page'] . ".php";
 	$contenu = ob_get_contents();
@@ -33,6 +33,9 @@ elseif($_GET['page']=='adminFormController'){
 }
 elseif($_GET['page']=='adminSalarieController'){
 	require "Controller/adminSalarieController.php";
+}
+elseif($_GET['page']='maFormationPDF'){
+	require 'Controller/maFormationPDF.php';
 }
 
 ?>

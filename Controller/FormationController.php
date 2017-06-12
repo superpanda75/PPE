@@ -5,6 +5,62 @@ require 'corps/salarie.php';
 require 'Model/FormationDAO.php';
 require 'Model/ParticiperDAO.php';
 
+
+/**
+ * @param $chaine
+ * @return array|null
+ */
+function findFormation($chaine)
+{
+    $result = search(safe($chaine));
+// affichage d'un message "pas de résultats"
+    if (count($result) == 0) {
+        ?>
+        <h3 style="text-align:center; margin:10px 0;">Pas de r&eacute;sultats pour cette recherche</h3>
+        <?php
+    } else {
+        $_SESSION['results'] = 'true';
+        // parcours et affichage des résultats
+        $formations = array();
+        foreach ($result as $formationDetails) {
+            $formation = new Formation(
+                $formationDetails['id_f'],
+                $formationDetails['titre'],
+                $formationDetails['cout'],
+                $formationDetails['date_debut'],
+                $formationDetails['duree'],
+                $formationDetails['image'],
+                $formationDetails['nb_place'],
+                $formationDetails['type_f'],
+                $formationDetails['prestataire_f'],
+                $formationDetails['adresse_f'],
+                $formationDetails['contenu']);
+
+            array_push($formations, $formation);
+        }
+
+        $i = 0;
+        foreach ($formations as $laFormation) {
+            if ($i % 4 == 0) {
+                echo "<li class='one_quarter first'><a href='" . BASE_URL . "/editFormController&f=" . $laFormation->getId() . "'><img src='" . BASE_URL . "/" . $laFormation->getImage() . "' alt=''><p class='center'>" . $laFormation->getTitre() . "</p></a></li>";
+            } else {
+                echo "<li class='one_quarter'><a href='" . BASE_URL . "/editFormController&f=" . $laFormation->getId() . "'><img src='" . BASE_URL . "/" . $laFormation->getImage() . "' alt=''><p class='center'>" . $laFormation->getTitre() . "</p></a></li>";
+            }
+            $i++;
+
+        }
+        return $formations;
+    }
+    return null;
+}
+
+function safe($var)
+{
+    $var = addcslashes($var, '%_');
+    $var = trim($var);
+    $var = htmlspecialchars($var);
+    return $var;
+}
 /**
  * @return array
  */
@@ -78,7 +134,7 @@ function checkRegister($idSalarie,$idChef,$idFormation){
     return $message;
 }
 
-
+$Formations = makeFormations();
 
 if (isset($_POST['x']) && $_POST['x']=="checkRegister"){
     $result = checkRegister(
@@ -87,6 +143,39 @@ if (isset($_POST['x']) && $_POST['x']=="checkRegister"){
         intval($_POST['formation'])
     );
 }
+
+function makeFormations()
+{
+    if ($datas = getAllFormations()) {
+        $Formations = array();
+        foreach ($datas as $index) {
+            $formation = new Formation(
+                $index['id_f'],
+                $index['titre'],
+                $index['cout'],
+                $index['date_debut']= date( 'd-m-Y H:i', strtotime( $index['date_debut'] )),
+                $index['duree'],
+                $index['image'],
+                $index['nb_place'],
+                $index['type_f'],
+                $index['prestataire_f'],
+                $index['adresse_f'],
+                $index['contenu']
+            );
+            array_push($Formations,$formation);
+        }
+        return $Formations;
+    } else {
+        return null;
+    }
+}
 $openFormations = openFormations();
+
+if (isset ($_GET['q'])) {
+    $formationsToShow = findFormation($_GET['q']);
+die();
+}
+
+
 require ('View/pages/formation.php')
 ?>

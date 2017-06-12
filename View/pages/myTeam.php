@@ -102,11 +102,11 @@ foreach ($teamInfos as $salarie) {
                         </thead>";
         foreach ($formationsInfos[$salarie->getId()]['pending'] as $formation) {
             echo "
-                        <table>
+                        <table style='margin-bottom: 0px;'>
                         <thead>
                         <tbody>
                             <tr>
-                                <td class=center style='width: 20%'>" . $formation['titre'] . "</td>
+                                <td class=center style='width: 20%'><a target='_blank' href='".BASE_URL."/maFormationPDF?F=".$formation['id_f']."'>" . $formation['titre'] . "</a></td>
                                 <td class=center style='width: 30%'>" . $formation['contenu'] . "</td>
                                 <td class=center style='width: 14%'>" . $formation['duree'] . " jours</td>
                                 <td class=center style='width: 14%'>" . $formation['date_debut'] . "</td>
@@ -146,12 +146,11 @@ foreach ($teamInfos as $salarie) {
                             </tr>
                         </thead>";
         foreach ($formationsInfos[$salarie->getId()]['validated'] as $formation) {
-            echo "
-                        <table style='margin-bottom: 0px;'>
+            echo "                         <table style='margin-bottom: 0px;'>
                             <thead>
                                 <tbody>
                                     <tr>
-                                        <td class=center style='width: 20%'>" . $formation['titre'] . "</td>
+                                        <td class=center style='width: 20%'><a target='_blank' href='".BASE_URL."/maFormationPDF?F=".$formation['id_f']."'>" . $formation['titre'] . "</a></td>
                                         <td class=center style='width: 30%'>" . $formation['contenu'] . "</td>
                                         <td class=center style='width: 14%'>" . $formation['duree'] . " jours</td>
                                         <td class=center style='width: 14%'>" . $formation['date_debut'] . "</td>
@@ -198,7 +197,7 @@ foreach ($teamInfos as $salarie) {
                             <tbody>
 
                                 <tr>
-                                    <td class=center style='width: 20%'>" . $formation['titre'] . "</td>
+                                    <td class=center style='width: 20%'><a target='_blank' href='".BASE_URL."/maFormationPDF?F=".$formation['id_f']."'>" . $formation['titre'] . "</a></td>
                                     <td class=center style='width: 30%'>" . $formation['contenu'] . "</td>
                                     <td class=center style='width: 14%'>" . $formation['duree'] . " jours</td>
                                     <td class=center style='width: 14%'>" . $formation['date_debut'] . "</td>
@@ -209,14 +208,17 @@ foreach ($teamInfos as $salarie) {
                         </thead>
                     </table>
                 </table>
+            </div>
                 ";
         }
     }
-    echo "
-</div>
-</div>";
+
+
     $c++;
 }
+
+
+
 
 
 ?>

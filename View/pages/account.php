@@ -4,7 +4,6 @@
             <h6>Mon Compte</h6>
             <nav class="sdb_holder">
                 <ul>
-                    <li><a href="#">Mon Profil</a>
                     <li><a href="#">Mes formations</a>
                         <ul>
                             <li class="tablinks"  onclick="openCity(event, 'London')" id="defaultOpen"><a>formations en attente</a></li>
@@ -12,36 +11,40 @@
                             <li class="tablinks"  onclick="openCity(event, 'Tunis')"><a>formations effectuées</a></li>
                         </ul>
                     </li>
-                    <?php if ($_SESSION['curr_user'][0]['status'] > 1){ ?>
+                        <?php
+                    if ($_SESSION['curr_user'][0]['status'] > 1){
+                        ?>
                     <li><a href="#">Gestion Chef d'équipe</a>
                         <ul>
                             <li id="validation" class="tablinks"  onclick="openCity(event, 'Dublin')"><a>Validation des formations</a></li>
                                 <li><a href="<?=BASE_URL?>/myTeamController">Mon équipe</a></li>
-                                <li><a href="#">Créer une nouvelle équipe</a></li>
                         </ul>
                     </li>
+                    <?php }
+                    if ($_SESSION['curr_user'][0]['status'] > 2){
+
+                    ?>
                     <li><a href="#">Gestion Administrateur</a>
                         <ul>
                             <li class="tablinks"  ><a href="<?=BASE_URL?>/adminSalarieController"> Gestion des SALARIÉS ADMIN</a></li>
                             <li class="tablinks"  ><a href="<?=BASE_URL?>/adminFormController">Gestion des FROMATIONS ADMIN</a></li>
                         </ul>
                     </li>
-                    <li><a href="<?=BASE_URL?>/chatController">Contact</a></li>
                     <?php } ?>
 
                 </ul>
             </nav>
             <div class="sdb_holder">
-                <h6>Lorem ipsum dolor</h6>
+                <h6>Maison des Ligues de la Lorraine</h6>
                 <address>
-                    Full Name<br>
-                    Address Line 1<br>
-                    Address Line 2<br>
-                    Town/City<br>
-                    Postcode/Zip<br>
+                    M.2.L<br>
+                    13 rue Jean Moulin<br>
+                    - BP 70001<br>
+                    TOMBLAINE<br>
+                    54510<br>
                     <br>
-                    Tel: xxxx xxxx xxxxxx<br>
-                    Email: <a href="#">contact@domain.com</a>
+                    Tél. : 03.83.18.87.02<br>
+                    Email: contact@m2l.fr
                 </address>
             </div>
         </div>
@@ -77,7 +80,7 @@
                                 echo "
                                 <tr id=" . $key['id_participation'] . ">
                                     <td class='center'>" . $key['titre'] . "</td>
-                                    <td class='center'>" . $key['nom'] . " " . $key['prenom'] . "</td>
+                                    <td class='center'>" . $key['id_validateur'] . "</td>
                                     <td class='center'>" . $key['date_demande'] . "</td>
                                     <td class='del center'
                                         id='" . $key['id_participation'] . "'
@@ -144,77 +147,6 @@
                     ?>
                     </tbody>
                 </table>
-            </div>
-            <div id="comments">
-                <h2>Comments Paris</h2>
-                <ul>
-                    <li>
-                        <article>
-                            <header>
-                                <figure class="avatar"><img src="<?=BASE_URL?>/View/images/demo/avatar.png" alt=""></figure>
-                                <address>
-                                    By <a href="#">A Name</a>
-                                </address>
-                                <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
-                            </header>
-                            <div class="comcont">
-                                <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
-                            </div>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <figure class="avatar"><img src="<?=BASE_URL?>/View/images/demo/avatar.png" alt=""></figure>
-                                <address>
-                                    By <a href="#">A Name</a>
-                                </address>
-                                <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
-                            </header>
-                            <div class="comcont">
-                                <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
-                            </div>
-                        </article>
-                    </li>
-                    <li>
-                        <article>
-                            <header>
-                                <figure class="avatar"><img src="<?=BASE_URL?>/View/images/demo/avatar.png" alt=""></figure>
-                                <address>
-                                    By <a href="#">A Name</a>
-                                </address>
-                                <time datetime="2045-04-06T08:15+00:00">Friday, 6<sup>th</sup> April 2045 @08:15:00</time>
-                            </header>
-                            <div class="comcont">
-                                <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
-                            </div>
-                        </article>
-                    </li>
-                </ul>
-                <h2>Write A Comment</h2>
-                <form action="#" method="post">
-                    <div class="one_third first">
-                        <label for="name">Name <span>*</span></label>
-                        <input type="text" name="name" id="name" value="" size="22" required>
-                    </div>
-                    <div class="one_third">
-                        <label for="email">Mail <span>*</span></label>
-                        <input type="email" name="email" id="email" value="" size="22" required>
-                    </div>
-                    <div class="one_third">
-                        <label for="url">Website</label>
-                        <input type="url" name="url" id="url" value="" size="22">
-                    </div>
-                    <div class="block clear">
-                        <label for="comment">Your Comment</label>
-                        <textarea name="comment" id="comment" cols="25" rows="10"></textarea>
-                    </div>
-                    <div>
-                        <input type="submit" name="submit" value="Submit Form">
-                        &nbsp;
-                        <input type="reset" name="reset" value="Reset Form">
-                    </div>
-                </form>
             </div>
         </div>
         </div>
@@ -467,5 +399,18 @@ if (isset($_GET['City']) == 'Dublin'){
    jQuery('#validation').click();
 });
            </script>";
+}elseif(isset($_GET['City']) == 'Paris'){
+    echo "<script>
+            jQuery(function(){
+   jQuery('#validation').click();
+});
+           </script>";
+}elseif(isset($_GET['City']) == 'Tunis'){
+    echo "<script>
+            jQuery(function(){
+   jQuery('#validation').click();
+});
+           </script>";
 }
+
 ?>

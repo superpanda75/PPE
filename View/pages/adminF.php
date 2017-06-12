@@ -145,7 +145,7 @@ Licence URI: http://www.os-templates.com/template-terms
             </div>
             <!-- ################################################################################################ -->
             <!-- ################################################################################################ -->
-            <nav class="pagination">
+            <!--<nav class="pagination">
                 <ul>
                     <li><a href="#">&laquo; Previous</a></li>
                     <li><a href="#">1</a></li>
@@ -160,7 +160,7 @@ Licence URI: http://www.os-templates.com/template-terms
                     <li><a href="#">15</a></li>
                     <li><a href="#">Next &raquo;</a></li>
                 </ul>
-            </nav>
+            </nav>-->
             <!-- ################################################################################################ -->
         </div>
         <!-- ################################################################################################ -->
@@ -242,11 +242,8 @@ Licence URI: http://www.os-templates.com/template-terms
 <script src="<?=BASE_URL?>/View/js/jquery.mobilemenu.js"></script>
 <script>
     $(document).ready( function() {
-
-
         // détection de la saisie dans le champ de recherche
         $('#q').keyup( function(){
-
             $field = $(this);
             $('#results').html(''); // on vide les resultats
             $('#ajax-loader').remove(); // on retire le loader

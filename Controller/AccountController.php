@@ -6,6 +6,7 @@ require 'Model/AdresseDAO.php';
 require 'Model/FormationDAO.php';
 require 'Model/ParticiperDAO.php';
 require 'Model/SuperieurDAO.php';
+require 'Model/SalarieDAO.php';
 
 if (isset($_POST['idA'])){
         deleteParticiper($_POST['idA']);
@@ -42,11 +43,21 @@ function makeValidatedFormationsInfos($idUser){
 function makeDoneFormationsDatas($idUser){
     return getDoneFormationsDatas($idUser);
 }
+function makeReferent($value){
+    $id = intval($value);
+    $referentDetails = getUserById($id);
+    $referentDetails = $referentDetails[0];
+    return $referentDetails;
+
+}
 
 $pendingFormDatas = makePendingFormationsInfos($_SESSION['curr_user'][0]['id_s']);
 $formatedDatesPFD = $pendingFormDatas;
-foreach ($formatedDatesPFD as &$index){
+foreach ($formatedDatesPFD as $index){
     $index['date_demande'] = date( 'd/m/Y à H:i', strtotime( $index['date_demande'] ) );
+    $referentDetails = makeReferent(intval($index['id_validateur']));
+    $index['id_validateur'] = $referentDetails['nom']." ".$referentDetails['prenom'];
+
 }
 
 $validatedFormDatas = makeValidatedFormationsInfos($_SESSION['curr_user'][0]['id_s']);

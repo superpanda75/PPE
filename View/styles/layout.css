@@ -15,6 +15,9 @@ File: Layout CSS
 /*ADDED for M2L
 --------------------------------------------------------------------------------------------------------------- */
 
+.btmspace-15Pass{
+  margin-bottom: 0px;
+}
 /* navs from bootstrap */
 
 #bgQCQ{

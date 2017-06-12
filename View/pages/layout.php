@@ -36,7 +36,7 @@ Licence URI: http://www.os-templates.com/template-terms
         <div class="fl_right">
             <ul>
                 <?php
-                if(isset($_SESSION['connecte']) && $_SESSION['connecte'] = true){
+                if(isset($_SESSION['connecte']) && $_SESSION['connecte'] == true){
                     echo "<li><a href='".BASE_URL."/accueil'><i class='fa fa-lg fa-home'></i></a></li>";
                     echo "<li><a href='".BASE_URL."/AccountController'><i class='fa fa-lg fa-user'></i>Profil</a></li>";
                     echo "<li><a href='".BASE_URL."/loginController?a=logout'>Deconnexion</a></li>";
@@ -62,36 +62,53 @@ Licence URI: http://www.os-templates.com/template-terms
             <h2>Maison des ligues de la Lorraine</h2>
             <!-- ################################################################################################ -->
         </div>
+        <?php if (isset($_SESSION['curr_user'][0])) { ?>
         <nav id="mainav" class="clear">
             <!-- ################################################################################################ -->
             <ul class="clear">
                 <li class="active"><a href="<?=BASE_URL?>/accueil">Accueil</a></li>
+                <!--<li><a class="drop" href="#">Formations</a>
+                    <ul>
+                        <li><a href="<?/*=BASE_URL*/?>/FormationController">Formations</a></li>
+                        <li><a href="<?/*=BASE_URL*/?>/full-widthController">Commentaires</a></li>
+                        <li><a href="<?/*=BASE_URL*/?>/sidebar-leftController">Sidebar Left</a></li>
+                        <li><a href="<?/*=BASE_URL*/?>/sidebar-rightController">Sidebar Right</a></li>
+                        <li><a href="<?/*= BASE_URL */?>/basic-gridController">Basic Grid</a></li>
+                    </ul>
+                </li>-->
                 <li><a class="drop" href="#">Formations</a>
                     <ul>
-                        <li><a href="<?=BASE_URL?>/FormationController">Formations</a></li>
-                        <li><a href="<?=BASE_URL?>/full-widthController">Commentaires</a></li>
-                        <li><a href="<?=BASE_URL?>/sidebar-leftController">Sidebar Left</a></li>
-                        <li><a href="<?=BASE_URL?>/sidebar-rightController">Sidebar Right</a></li>
-                        <li><a href="<?= BASE_URL ?>/basic-gridController">Basic Grid</a></li>
-                    </ul>
-                </li>
-                <li><a class="drop" href="#">Dropdown</a>
-                    <ul>
-                        <li><a href="#">Level 2</a></li>
-                        <li><a class="drop" href="#">Level 2 + Drop</a>
+                        <li><a href="<?=BASE_URL?>/FormationController?City=Dublin'>">A Venir / rechercher</a></li>
+                        <li><a class="drop" href="#">Mes Formations :</a>
                             <ul>
-                                <li><a href="#">Level 3</a></li>
-                                <li><a href="#">Level 3</a></li>
-                                <li><a href="#">Level 3</a></li>
+                                <li><a href='<?=BASE_URL?>/accountController?City=Dublin'>En attente</a></li>
+                                <li><a href='<?=BASE_URL?>/accountController?City=Paris'>Validées</a></li>
+                                <li><a href='<?=BASE_URL?>/accountController?City=Tunis'>Éffecuées</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Level 2</a></li>
+                    </ul>
+                    <?php if ($_SESSION['curr_user'][0]['status'] > 1){ ?>
+                <li><a class="drop" href="#">Équipe</a>
+                    <ul>
+                        <li><a href="<?=BASE_URL?>/myTeamController">Mon Équipe</a></li>
+                        <li><a href="<?=BASE_URL?>/FormationController">Valider des formations</a></li>
+
                     </ul>
                 </li>
-                <li><a href="#">Long Link Text</a></li>
+                <?php } if ($_SESSION['curr_user'][0]['status'] == 3){ ?>
+                <li><a class="drop" href="#">ADMIN</a>
+                    <ul>
+                        <li><a href="<?=BASE_URL?>/FormationController">Gestion des salariés</a></li>
+                        <li><a href="<?=BASE_URL?>/full-widthController">Gestion des formations</a></li>
+
+                    </ul>
+                </li>
+                <?php } ?>
+                </li>
             </ul>
             <!-- ################################################################################################ -->
         </nav>
+        <?php } ?>
     </header>
 </div>
 <!-- ################################################################################################ -->

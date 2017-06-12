@@ -18,6 +18,8 @@ function checkRegex($post)
     $file = "/\b(\.jpg|\.JPG|\.png|\.PNG|\.gif|\.GIF)\b/";
     extract($post);
 
+
+
     if (preg_match($nombres, $id)) {
         if (preg_match($alphabetique, $nom)) {
             if (preg_match($alphabetique, $prenom)) {
