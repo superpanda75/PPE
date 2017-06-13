@@ -11,25 +11,25 @@
                             <li class="tablinks"  onclick="openCity(event, 'Tunis')"><a>formations effectuées</a></li>
                         </ul>
                     </li>
-                        <?php
+                    <?php
                     if ($_SESSION['curr_user'][0]['status'] > 1){
                         ?>
-                    <li><a href="#">Gestion Chef d'équipe</a>
-                        <ul>
-                            <li id="validation" class="tablinks"  onclick="openCity(event, 'Dublin')"><a>Validation des formations</a></li>
+                        <li><a href="#">Gestion Chef d'équipe</a>
+                            <ul>
+                                <li id="validation" class="tablinks"  onclick="openCity(event, 'Dublin')"><a>Validation des formations</a></li>
                                 <li><a href="<?=BASE_URL?>/myTeamController">Mon équipe</a></li>
-                        </ul>
-                    </li>
+                            </ul>
+                        </li>
                     <?php }
                     if ($_SESSION['curr_user'][0]['status'] > 2){
 
-                    ?>
-                    <li><a href="#">Gestion Administrateur</a>
-                        <ul>
-                            <li class="tablinks"  ><a href="<?=BASE_URL?>/adminSalarieController"> Gestion des SALARIÉS ADMIN</a></li>
-                            <li class="tablinks"  ><a href="<?=BASE_URL?>/adminFormController">Gestion des FROMATIONS ADMIN</a></li>
-                        </ul>
-                    </li>
+                        ?>
+                        <li><a href="#">Gestion Administrateur</a>
+                            <ul>
+                                <li class="tablinks"  ><a href="<?=BASE_URL?>/adminSalarieController"> Gestion des SALARIÉS ADMIN</a></li>
+                                <li class="tablinks"  ><a href="<?=BASE_URL?>/adminFormController">Gestion des FROMATIONS ADMIN</a></li>
+                            </ul>
+                        </li>
                     <?php } ?>
 
                 </ul>
@@ -54,11 +54,11 @@
             <p>De plus, vous pouvez contacter <a href="#">un prestatire</a> responsable d'une formation mais aussi contacter un référent dans le cadre d'une inscription à formation</p>
             <img class="imgl borderedbox inspace-5" src="<?=BASE_URL?>/View/images/demo/imgl.gif" alt="">
             <p>Vos formations sont dans un premier temps en attente de validation par le referent choisi. Puis, quand celles-ci sont validées ou refusées, elles sont placés dans vos formations validées/refusées,<strong><a class="validated"> les formations validées sont sur fond Bleu</a></strong> et <strong><a class="canceled">les formation refusées sont
-                sur fond Orange</a></strong>. Le lieu et la date seront renseignés dans le tableau ci-dessous.
+                        sur fond Orange</a></strong>. Le lieu et la date seront renseignés dans le tableau ci-dessous.
             <p>Vous pouvez consulter les commentaires au sujet de ces formations en cliquant sur le titre de la formation. Une fois la formation effectuée vous pourrez à votre tour commenter la formation et donner votre avis sur les locaux, la pédagogie...</p>
 
             <div id="London" class="tabcontent">
-            <h1>VOS FORMATIONS EN ATTENTE DE VALIDATION :</h1>
+                <h1>VOS FORMATIONS EN ATTENTE DE VALIDATION :</h1>
                 <div class="scrollable">
                     <table>
                         <?php
@@ -100,13 +100,13 @@
             </div>
         </div>
         <div id="Paris" class="tabcontent">
-        <div class="content three_quarter">
-            <h1>Vos Formations validées :</h1>
-            <div class="scrollable">
-                <?php
-                $i=0;
-                if ($formatedDatesVFD) {
-                    echo "
+            <div class="content three_quarter">
+                <h1>Vos Formations validées :</h1>
+                <div class="scrollable">
+                    <?php
+                    $i=0;
+                    if ($formatedDatesVFD) {
+                        echo "
                     <table>
                         <thead>
                         <tr>
@@ -146,20 +146,20 @@
                     }
                     ?>
                     </tbody>
-                </table>
+                    </table>
+                </div>
             </div>
-        </div>
         </div>
 
         <div id="Tunis" class="tabcontent">
             <div class="content three_quarter">
-            <h1>VOS FORMATIONS TERMINEES :</h1>
-            <h1>Table(s)</h1>
-            <div class="scrollable">
-                <?php
-                $i=0;
-                if ($formatedDateDFD) {
-                    echo "
+                <h1>VOS FORMATIONS TERMINEES :</h1>
+                <h1>Table(s)</h1>
+                <div class="scrollable">
+                    <?php
+                    $i=0;
+                    if ($formatedDateDFD) {
+                        echo "
                     <table>
                         <thead>
                         <tr>
@@ -183,13 +183,13 @@
                                     ";
                         }
                     }else{
-                    echo " <h1 class='invalid'>Vous n'avez encore participé à aucune formation</h1> ";
+                        echo " <h1 class='invalid'>Vous n'avez encore participé à aucune formation</h1> ";
 
-                }
+                    }
 
                     ?>
                     </tbody>
-                </table>
+                    </table>
                 </div>
             </div>
         </div>
@@ -213,9 +213,9 @@
                             </thead>
                             <tbody>";
 
-                            foreach ($demandeurs as $key) {
+                        foreach ($demandeurs as $key) {
 
-                                echo "
+                            echo "
                                     <tr id=" . $key['id_participation'] . ">
                                         <td class='center'>" . $key['titre'] . "</td>
                                         <td class='center'>" . $key['nom'] . " " . $key['prenom'] . "</td>
@@ -230,12 +230,12 @@
                                         </td>
                                     </tr>
                                     ";
-                            }
-                        }else{
-                            echo " <h1 class='invalid'>Vous n'avez aucune demande de validation d'inscription en attente</h1> ";
                         }
-                        ?>
-                        </tbody>
+                    }else{
+                        echo " <h1 class='invalid'>Vous n'avez aucune demande de validation d'inscription en attente</h1> ";
+                    }
+                    ?>
+                    </tbody>
                     </table>
                 </div>
             </div>
@@ -247,7 +247,7 @@
 
 
 
-    <!--FENETRE ALERTE -->
+<!--FENETRE ALERTE -->
 <div id="myModal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -258,12 +258,12 @@
             <p>Vous êtes sur le point d'annuler la demande à cette formation.</p>
             <p>En êtes-vous sûr ?</p>
 
-        <div>
-            <ul class="nospace inline pushright center">
-                <li class="check" id="true"><a class="btn inverse">Oui</a></li>
-                <li class="checkn" id="false"><a class="btn inverse">Non</a></li>
-            </ul>
-        </div>
+            <div>
+                <ul class="nospace inline pushright center">
+                    <li class="check" id="true"><a class="btn inverse">Oui</a></li>
+                    <li class="checkn" id="false"><a class="btn inverse">Non</a></li>
+                </ul>
+            </div>
             <br>
         </div>
         <div class="modal-footer">

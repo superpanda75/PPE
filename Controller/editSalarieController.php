@@ -1,19 +1,19 @@
 <?php
 if (!isset($_POST['charge'])) {
-require 'Model/connect.php';
-require 'Model/PrestataireDAO.php';
-require 'Model/AdresseDAO.php';
-require 'corps/formation.php';
-require 'corps/salarie.php';
-require 'corps/functions.php';
+    require 'Model/connect.php';
+    require 'Model/PrestataireDAO.php';
+    require 'Model/AdresseDAO.php';
+    require 'corps/formation.php';
+    require 'corps/salarie.php';
+    require 'corps/functions.php';
 }
 
 if (!function_exists('upload')) {
     /**
-    * @param $file
-    * @return string
-    *
-    */
+     * @param $file
+     * @return string
+     *
+     */
     function upload($file){
 
         $dossier = 'View/image_salarie/';
@@ -32,23 +32,23 @@ if (!function_exists('upload')) {
         }
         if (!isset($erreur)){ //S'il n'y a pas d'erreur, on upload
 
-        //On formate le nom du fichier ici...
+            //On formate le nom du fichier ici...
             $fichier = strval($_POST['id']).'.jpeg';
 
             return (move_uploaded_file($file['tmp_name'], $dossier . $fichier)); //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
         } else {
             return $erreur;
-            }
         }
     }
+}
 
 if (!function_exists('makeFormationById')) {
-/**
-* @param $id
-* @return Formation|null
-*
-* retourne un onjet de type formation à partir d'un id;
-*/
+    /**
+     * @param $id
+     * @return Formation|null
+     *
+     * retourne un onjet de type formation à partir d'un id;
+     */
     function makeSalarieById($id){
         $salarie = null;
         if ($datas = getUserById($id)) {
@@ -77,10 +77,10 @@ if (!function_exists('makeFormationById')) {
 
 
 if (!function_exists('getAdresse')) {
-/**
-* @param $id
-* @return array
-*/
+    /**
+     * @param $id
+     * @return array
+     */
     function getAdresse($id){
         return getAdresseById($id);
     }
@@ -90,8 +90,8 @@ if (!function_exists('getAdresse')) {
 //SI un fichier est uploadé on s'en occupe ici
 if (isset($_FILES['fileToUpload'])) {
     if ($_FILES['fileToUpload']['name'] !='')
-    var_dump($_FILES['fileToUpload']);
-upload($_FILES['fileToUpload']);
+        var_dump($_FILES['fileToUpload']);
+    upload($_FILES['fileToUpload']);
 }
 
 

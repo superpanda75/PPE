@@ -2,7 +2,6 @@
 require 'Model/connect.php';
 require 'Model/SalarieDAO.php';
 require 'Model/AdresseDAO.php';
-require 'Model/CommentaireDAO.php';
 require 'Model/FormationDAO.php';
 require 'Model/PrestataireDAO.php';
 
@@ -20,6 +19,11 @@ function connect($login,$password){
     return $user;
 }
 
+/**
+ * @param $id
+ * @param $cook
+ * @return string
+ */
 function checkCookieKey($id,$cook){
     $user = getUserById($id);
     if (sizeof($user)< 1){
@@ -36,6 +40,9 @@ function checkCookieKey($id,$cook){
     }
 }
 
+/**
+ *
+ */
 function disconnect(){
     session_destroy();
     unset($_GET['a']);

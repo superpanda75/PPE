@@ -7,6 +7,10 @@ require 'Model/PrestataireDAO.php';
 require 'corps/formation.php';
 
 if(!function_exists('makeFormation')){
+    /**
+     * @param $formation
+     * @return Formation
+     */
     function makeFormation($formation){
         $formation = $formation[0];
         $adresse = getAdresseById(intval($formation['adresse_f']));
@@ -23,20 +27,20 @@ if(!function_exists('makeFormation')){
         $presta = $presta[0]['raison_sociale']." -- ".$presta[0]['nom'] ;
 
         $formation['date_debut'] = date( 'd/m/Y à H:i', strtotime( $formation['date_debut'] ) );
-            $F = new Formation(
-                $formation['id_f'],
-                $formation['titre'],
-                $formation['cout'],
-                $formation['date_debut'],
-                $formation['duree'],
-                NULL,
-                $formation['nb_place'],
-                $typeF,
-                $presta,
-                $adresseString,
-                $formation['contenu']
-                );
-    return $F;
+        $F = new Formation(
+            $formation['id_f'],
+            $formation['titre'],
+            $formation['cout'],
+            $formation['date_debut'],
+            $formation['duree'],
+            NULL,
+            $formation['nb_place'],
+            $typeF,
+            $presta,
+            $adresseString,
+            $formation['contenu']
+        );
+        return $F;
     }
 }
 
@@ -55,8 +59,7 @@ if(isset($_GET['F'])){
 
 }
 
-// (c) Xavier Nicolay
-// Exemple de génération de devis/facture PDF
+
 
 require('corps/invoice.php');
 
@@ -66,7 +69,7 @@ $pdf->addSociete( "Maison Des Ligues de la Lorraine",
     "13 rue Jean Moulin - BP 70001\n" .
     "54510 TOMBLAINE,\n".
     "France"
-    );
+);
 $pdf->fact_dev( "Fiche formation" );
 $pdf->temporaire( "Fiche Formation" );
 $pdf->addDate( utf8_decode($formation->getTitre()));

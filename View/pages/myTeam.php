@@ -161,7 +161,7 @@ foreach ($teamInfos as $salarie) {
         }
         echo "</div>";
     }
-;
+    ;
 
     if (sizeof($formationsInfos[$salarie->getId()]['done'])> 0) {
 
@@ -282,10 +282,10 @@ foreach ($teamInfos as $salarie) {
      * @param type
      */
     function afficherCacher(type){
-     if (document.getElementById(type).style.display == 'block') {
-     document.getElementById(type).style.display = 'none';
-     } else {
-     document.getElementById(type).style.display = 'block';
-     }
-     }
+        if (document.getElementById(type).style.display == 'block') {
+            document.getElementById(type).style.display = 'none';
+        } else {
+            document.getElementById(type).style.display = 'block';
+        }
+    }
 </script>

@@ -1099,7 +1099,7 @@ div.tab button.active {
 .latest{}
 .latest article{}
 .latest article figure{display:block; position:relative;}
-.latest article figure img{}
+.latest article figure img{width: 320px;height: 220px}
 .latest article figure figcaption{position:absolute; top:0; left:10px; width:50px;}
 .latest article figure figcaption *{display:block; margin:0; padding:0; text-align:center; text-transform:uppercase; font-style:normal; line-height:1;}
 .latest article figure figcaption time{width:100%;}

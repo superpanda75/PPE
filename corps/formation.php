@@ -2,17 +2,50 @@
 if (!class_exists('Formation')) {
     class Formation
     {
+        /**
+         * @var
+         */
         private $_id;
+        /**
+         * @var
+         */
         private $_titre;
+        /**
+         * @var
+         */
         private $_cout;
+        /**
+         * @var
+         */
         private $_dateDebut;
+        /**
+         * @var
+         */
         private $_duree;
+        /**
+         * @var
+         */
         private $_image;
+        /**
+         * @var
+         */
         private $_NbPlace;
+        /**
+         * @var
+         */
         private $_typeFormation; //TODO: c'est la catégorie de la formation, on récupèrera l'id;
+        /**
+         * @var
+         */
         private $_prestataire; //TODO: Ici on récupèrera l'id du prestataire puis à partir de cet
-                                // ID nous ferons les traitements nécessaires
+        // ID nous ferons les traitements nécessaires
+        /**
+         * @var
+         */
         private $_adresse; //TODO: de même nous partirons de l'ID de l'adresse;
+        /**
+         * @var
+         */
         private $_contenu;
 
         /**

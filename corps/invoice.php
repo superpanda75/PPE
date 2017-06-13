@@ -1,43 +1,18 @@
 <?php
 mb_internal_encoding("UTF-8");
 require('fpdf/fpdf.php');
+/**
+ *
+ */
 define('EURO', chr(128) );
+/**
+ *
+ */
 define('EURO_VAL', 6.55957 );
 
-// Xavier Nicolay 2004
-// Version 1.02
-//
-// Reste à faire :
-// + Multipage (gestion automatique sur plusieurs pages)
-// + Ajout de logo
-//
-
-//////////////////////////////////////
-// fonctions à utiliser (publiques) //
-//////////////////////////////////////
-//  function sizeOfText( $texte, $larg )
-//  function addSociete( $nom, $adresse )
-//  function fact_dev( $libelle, $num )
-//  function addDevis( $numdev )
-//  function addFacture( $numfact )
-//  function addDate( $date )
-//  function addClient( $ref )
-//  function addPageNumber( $page )
-//  function addClientAdresse( $adresse )
-//  function addReglement( $mode )
-//  function addEcheance( $date )
-//  function addNumTVA($tva)
-//  function addReference($ref)
-//  function addCols( $tab )
-//  function addLineFormat( $tab )
-//  function lineVert( $tab )
-//  function addLine( $ligne, $tab )
-//  function addRemarque($remarque)
-//  function addCadreTVAs()
-//  function addCadreEurosFrancs()
-//  function addTVAs( $params, $tab_tva, $invoice )
-//  function temporaire( $texte )
-
+/**
+ * Class PDF_Invoice
+ */
 class PDF_Invoice extends FPDF
 {
 // variables privées
@@ -246,24 +221,7 @@ class PDF_Invoice extends FPDF
         $this->Cell(10,5,$ref, 0,0, "C");
     }
 
-// Affiche un cadre avec un numero de page
-// (en haut, a droite)
-/*    function addPageNumber( $page )
-    {
-        $r1  = $this->w - 80;
-        $r2  = $r1 + 19;
-        $y1  = 17;
-        $y2  = $y1;
-        $mid = $y1 + ($y2 / 2);
-        $this->RoundedRect($r1, $y1, ($r2 - $r1), $y2, 3.5, 'D');
-        $this->Line( $r1, $mid, $r2, $mid);
-        $this->SetXY( $r1 + ($r2-$r1)/2 - 5, $y1+3 );
-        $this->SetFont( "Arial", "B", 10);
-        $this->Cell(10,5, "PAGE", 0, 0, "C");
-        $this->SetXY( $r1 + ($r2-$r1)/2 - 5, $y1 + 9 );
-        $this->SetFont( "Arial", "", 10);
-        $this->Cell(10,5,$page, 0,0, "C");
-    }*/
+
 
 // Affiche l'adresse du client
 // (en haut, a droite)
@@ -399,14 +357,7 @@ class PDF_Invoice extends FPDF
         return $maxSize;
     }
 
-// Affiche chaque "ligne" d'un devis / facture
-    /*    $ligne = array( "REFERENCE"    => $prod["ref"],
-                          "DESIGNATION"  => $libelle,
-                          "QUANTITE"     => sprintf( "%.2F", $prod["qte"]) ,
-                          "P.U. HT"      => sprintf( "%.2F", $prod["px_unit"]),
-                          "MONTANT H.T." => sprintf ( "%.2F", $prod["qte"] * $prod["px_unit"]) ,
-                          "TVA"          => $prod["tva"] );
-    */
+
     function addLine( $ligne, $tab )
     {
         global $colonnes, $format;
@@ -431,20 +382,7 @@ class PDF_Invoice extends FPDF
         return ( $maxSize - $ligne );
     }
 
-// Ajoute une remarque (en bas, a gauche)
-   /* function addRemarque($remarque)
-    {
-        $this->SetFont( "Arial", "", 10);
-        $length = $this->GetStringWidth( "Remarque : " . $remarque );
-        $r1  = 10;
-        $r2  = $r1 + $length;
-        $y1  = $this->h - 45.5;
-        $y2  = $y1+5;
-        $this->SetXY( $r1 , $y1 );
-        $this->Cell($length,4, "Remarque : " . $remarque);
-    }*/
 
-// trace le cadre des TVA
     function addCadreTVAs()
     {
         $this->SetFont( "Arial", "B", 8);
@@ -505,25 +443,6 @@ class PDF_Invoice extends FPDF
         $this->Cell(20,4, "NET A PAYER", 0, 0, "C");
     }
 
-// remplit les cadres TVA / Totaux et la remarque
-// params  = array( "RemiseGlobale" => [0|1],
-//                      "remise_tva"     => [1|2...],  // {la remise s'applique sur ce code TVA}
-//                      "remise"         => value,     // {montant de la remise}
-//                      "remise_percent" => percent,   // {pourcentage de remise sur ce montant de TVA}
-//                  "FraisPort"     => [0|1],
-//                      "portTTC"        => value,     // montant des frais de ports TTC
-//                                                     // par defaut la TVA = 19.6 %
-//                      "portHT"         => value,     // montant des frais de ports HT
-//                      "portTVA"        => tva_value, // valeur de la TVA a appliquer sur le montant HT
-//                  "AccompteExige" => [0|1],
-//                      "accompte"         => value    // montant de l'acompte (TTC)
-//                      "accompte_percent" => percent  // pourcentage d'acompte (TTC)
-//                  "Remarque" => "texte"              // texte
-// tab_tva = array( "1"       => 19.6,
-//                  "2"       => 5.5, ... );
-// invoice = array( "px_unit" => value,
-//                  "qte"     => qte,
-//                  "tva"     => code_tva );
     function addTVAs( $params, $tab_tva, $invoice )
     {
         $this->SetFont('Arial','',8);
@@ -699,9 +618,7 @@ class PDF_Invoice extends FPDF
         $this->Cell( 17,4, sprintf("%0.2F", ($totalTTC - $accompteTTC) * EURO_VAL), '', '', 'R');
     }
 
-// Permet de rajouter un commentaire (Devis temporaire, REGLE, DUPLICATA, ...)
-// en sous-impression
-// ATTENTION: APPELER CETTE FONCTION EN PREMIER
+
     function temporaire( $texte )
     {
         $this->SetFont('Arial','B',50);

@@ -54,6 +54,10 @@ function findFormation($chaine)
     return null;
 }
 
+/**
+ * @param $var
+ * @return string
+ */
 function safe($var)
 {
     $var = addcslashes($var, '%_');
@@ -66,28 +70,33 @@ function safe($var)
  */
 function openFormations()
 {
-    $openFormations = getAvailableFormationsByUserId($_SESSION['curr_user'][0]['id_s']);
+    $openFormations = getAvailableFormationsByUserId($_SESSION['curr_user'][0]['id_s'],20);
     $i=0;
     $objArrayFormations = array();
     foreach ($openFormations as $index){
         $formation = new Formation($index['id_f'],
-                                   $index['titre'],
-                                   $index['cout'],
-                                   $index['date_debut'],
-                                   $index['duree'],
-                                   $index['image'],
-                                   $index['nb_place'],
-                                   $index['type_f'],
-                                   $index['prestataire_f'],
-                                   $index['adresse_f'],
-                                   $index['contenu']
-            );
+            $index['titre'],
+            $index['cout'],
+            $index['date_debut'],
+            $index['duree'],
+            $index['image'],
+            $index['nb_place'],
+            $index['type_f'],
+            $index['prestataire_f'],
+            $index['adresse_f'],
+            $index['contenu']
+        );
         array_push($objArrayFormations,$formation);
     }
     return $objArrayFormations;
 }
 
 
+/**
+ * @param $idSalarie
+ * @param $idFormation
+ * @return bool
+ */
 function debitUser($idSalarie, $idFormation){
     $formationData = getFormationById($idFormation);
     $formation = new Formation(
@@ -117,6 +126,12 @@ function debitUser($idSalarie, $idFormation){
     }
 }
 
+/**
+ * @param $idSalarie
+ * @param $idChef
+ * @param $idFormation
+ * @return string
+ */
 function checkRegister($idSalarie,$idChef,$idFormation){
     $message = 'La demande d\'inscription a bien été envoyée !';
     if (empty(checkInscription($idSalarie,$idChef,$idFormation))){
@@ -144,6 +159,9 @@ if (isset($_POST['x']) && $_POST['x']=="checkRegister"){
     );
 }
 
+/**
+ * @return array|null
+ */
 function makeFormations()
 {
     if ($datas = getAllFormations()) {
@@ -173,7 +191,7 @@ $openFormations = openFormations();
 
 if (isset ($_GET['q'])) {
     $formationsToShow = findFormation($_GET['q']);
-die();
+    die();
 }
 
 

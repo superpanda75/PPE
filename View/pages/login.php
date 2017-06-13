@@ -1,4 +1,4 @@
-    <footer id="footer" class="hoc clear">
+<footer id="footer" class="hoc clear">
     <div class="wrapper row4">
         <div class="one_third"><p>  </p></div>
         <div class="one_third">
@@ -14,7 +14,7 @@
                 </fieldset>
             </form>
         </div>
-</div>
-    </footer>
+    </div>
+</footer>
 
 

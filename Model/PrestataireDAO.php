@@ -1,4 +1,8 @@
 <?php
+/**
+ * @param $id
+ * @return array
+ */
 function getPrestatireById($id){
     $key = connector();
     $query = $key->prepare('SELECT * FROM prestataire WHERE id_p=:id_prestataire');

@@ -9,7 +9,7 @@ require 'Model/SuperieurDAO.php';
 require 'Model/SalarieDAO.php';
 
 if (isset($_POST['idA'])){
-        deleteParticiper($_POST['idA']);
+    deleteParticiper($_POST['idA']);
     die();
 }
 
@@ -28,21 +28,41 @@ if (isset($_POST['idV']) && isset($_POST['reponse'])){
     }
 }
 
+/**
+ * @param $idParticipation
+ */
 function deleteParticiper($idParticipation){
     deleteParticipation($idParticipation);
 }
 
+/**
+ * @param $idUser
+ * @return array
+ */
 function makePendingFormationsInfos($idUser){
     return getPendingFormationsDatas($idUser);
 }
 
+/**
+ * @param $idUser
+ * @return array
+ */
 function makeValidatedFormationsInfos($idUser){
     return getValidatedFormationsDatas($idUser);
 }
 
+/**
+ * @param $idUser
+ * @return array
+ */
 function makeDoneFormationsDatas($idUser){
     return getDoneFormationsDatas($idUser);
 }
+
+/**
+ * @param $value
+ * @return array
+ */
 function makeReferent($value){
     $id = intval($value);
     $referentDetails = getUserById($id);
@@ -50,7 +70,7 @@ function makeReferent($value){
     return $referentDetails;
 
 }
-
+//en attente de validation
 $pendingFormDatas = makePendingFormationsInfos($_SESSION['curr_user'][0]['id_s']);
 $formatedDatesPFD = $pendingFormDatas;
 foreach ($formatedDatesPFD as $index){
@@ -60,6 +80,7 @@ foreach ($formatedDatesPFD as $index){
 
 }
 
+//validées
 $validatedFormDatas = makeValidatedFormationsInfos($_SESSION['curr_user'][0]['id_s']);
 $formatedDatesVFD = $validatedFormDatas;
 foreach ($formatedDatesVFD as &$index){
@@ -69,6 +90,7 @@ foreach ($formatedDatesVFD as &$index){
     $index['date_validation'] = date( 'd/m/Y à H:i', strtotime( $index['date_validation'] ) );
 }
 
+//effectuées
 $endedFormDatas = makeDoneFormationsDatas($_SESSION['curr_user'][0]['id_s']);
 $formatedDateDFD = $endedFormDatas;
 foreach ($formatedDateDFD as &$index){
@@ -78,6 +100,7 @@ foreach ($formatedDateDFD as &$index){
     $index['date_participation'] = date( 'd/m/Y à H:i', strtotime( $index['date_participation'] ) );
 }
 
+//demandeur
 if ($_SESSION['curr_user'][0]['status']>1){
     $demandeurs = getDemandeur($_SESSION['curr_user'][0]['id_s']);
     foreach ($demandeurs as &$index){

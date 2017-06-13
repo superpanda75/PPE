@@ -1,4 +1,3 @@
-<div id="bgQCQ">
-    <img src="View/images/404.png">
-
-</div>
+<?php
+require 'View/pages/404.php';
+?>

@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @param $idSalarie
+ * @param $idValidateur
+ * @param $idFormation
+ * @return array
+ */
 function checkInscription($idSalarie,$idValidateur,$idFormation){
     $key = connector();
 
@@ -13,11 +19,16 @@ function checkInscription($idSalarie,$idValidateur,$idFormation){
     $query->bindParam(':formation', $idFormation, PDO::PARAM_INT);
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
+    return $result;
 
 }
 
 
+/**
+ * @param $idSalarie
+ * @param $idValidateur
+ * @param $idFormation
+ */
 function addDemande($idSalarie,$idValidateur,$idFormation){
     $key = connector();
     $dateIns = date("Y-m-d H:i:s");
@@ -36,6 +47,10 @@ function addDemande($idSalarie,$idValidateur,$idFormation){
     $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
+/**
+ * @param $idSalarie
+ * @return array
+ */
 function getPendingFormationsDatas($idSalarie){
     $key = connector();
 
@@ -50,6 +65,10 @@ function getPendingFormationsDatas($idSalarie){
     return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
+/**
+ * @param $idSalarie
+ * @return array
+ */
 function getValidatedFormationsDatas($idSalarie){
     $key = connector();
 
@@ -65,6 +84,10 @@ function getValidatedFormationsDatas($idSalarie){
     return $result;
 }
 
+/**
+ * @param $idSalarie
+ * @return array
+ */
 function getDoneFormationsDatas($idSalarie){
     $key = connector();
 
@@ -80,6 +103,10 @@ function getDoneFormationsDatas($idSalarie){
     return $result;
 }
 
+/**
+ * @param $idSalarie
+ * @return array
+ */
 function getPendingStatus($idSalarie)
 {
     $key = connector();
@@ -96,7 +123,10 @@ function getPendingStatus($idSalarie)
 }
 
 
-
+/**
+ * @param $idSalarie
+ * @return array
+ */
 function getValidators($idSalarie){
     $key = connector();
 
@@ -111,6 +141,10 @@ function getValidators($idSalarie){
     return $result;
 }
 
+/**
+ * @param $idParticipation
+ * @return bool
+ */
 function deleteParticipation($idParticipation){
     $key = connector();
     $query = $key->prepare('DELETE FROM participer
@@ -119,6 +153,11 @@ function deleteParticipation($idParticipation){
     return $query->execute();
 }
 
+/**
+ * @param $idParticipation
+ * @param int $status
+ * @return bool
+ */
 function  validateFormation($idParticipation, $status = 2){
     $dateIns = date("Y-m-d H:i:s");
     $key = connector();
@@ -131,6 +170,10 @@ function  validateFormation($idParticipation, $status = 2){
     return $query->execute();
 }
 
+/**
+ * @param $idParticiper
+ * @return bool
+ */
 function  declineFormation($idParticiper){
     $key = connector();
     $query= $key->prepare('SELECT f.id_f, f.cout, f.duree, p.id_salarie

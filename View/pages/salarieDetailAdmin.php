@@ -38,7 +38,7 @@
                 <form method="post" action="<?=BASE_URL?>/editSalarieController" enctype="multipart/form-data">
                     <ul>
                         <li style="display: none">
-                        <input type="number" name="id" value="<?php echo $salarie->getId(); ?>">
+                            <input type="number" name="id" value="<?php echo $salarie->getId(); ?>">
 
                         </li>
                         <li>
@@ -66,9 +66,9 @@
                             <label for="rights">Hauteur des droits :</label>
                             <select  class="btn" name="rights" id="rights" required>
                                 <option selected disabled>droits :</option>
-                                    <option value='1'>1 user</option>";
-                                    <option value='2'>2 chef</option>";
-                                    <option value='3'>3 admin</option>";
+                                <option value='1'>1 user</option>";
+                                <option value='2'>2 chef</option>";
+                                <option value='3'>3 admin</option>";
                             </select>
                             <p>Hauteur initiale : <?php echo $salarie->getStatus(); ?></p>
                         </li>

@@ -5,6 +5,10 @@ require 'Model/SalarieDAO.php';
 require 'corps/formation.php';
 require 'corps/salarie.php';
 
+/**
+ * @param $var
+ * @return string
+ */
 function safe($var)
 {
     $var = addcslashes($var, '%_');
@@ -12,6 +16,11 @@ function safe($var)
     $var = htmlspecialchars($var);
     return $var;
 }
+
+/**
+ * @param $chaine
+ * @return array|null
+ */
 function findSalarie($chaine)
 {
     var_dump(safe($chaine));
@@ -58,6 +67,9 @@ function findSalarie($chaine)
 }
 // appel à la fonction si q est bien envoyé en ajax (q étant la chaine tapée par l'utilisateur dans le champ
 // de recherche
+/**
+ * @return array|null
+ */
 function makeSalaries()
 {
     if ($datas = getAllSalaries()) {

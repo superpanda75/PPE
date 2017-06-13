@@ -64,37 +64,29 @@ if(isset($_GET['f'])){
         $formationDetails[0]['contenu']
     );
 
-
-    var_dump($formation);
-
     setlocale(LC_TIME, 'fr_FR.UTF8', 'fr.UTF8', 'fr_FR.UTF-8', 'fr.UTF-8');
     $frenchDate = strftime("%A %d %B %Y",strtotime($formation->getDateDebut()));
     $prestataire = getPrestataire($formation->getPrestataire());
     $adresse = getAdresse($formation->getAdresse());
     $adressString = $adresse[0]['numero_rue']." "
-                    .$adresse[0]['rue'].", "
-                    .$adresse[0]['ville']." "
-                    .$adresse[0]['code_postal'];
+        .$adresse[0]['rue'].", "
+        .$adresse[0]['ville']." "
+        .$adresse[0]['code_postal'];
     $type = getTypeF($formation->getTypeFormation());
     $listeChefs = selectLeader($_SESSION['curr_user'][0]['id_s']);
-    var_dump($frenchDate);
-    var_dump($prestataire);
-    var_dump($adresse);
-    var_dump($type);
-    var_dump($listeChefs);
 
 
-        $data=json_encode(
-            array(
-                "salarie" => $_SESSION['curr_user'][0]['id_s'],
-                "formationId" => $formation->getId()
-            )
-        );
+
+    $data=json_encode(
+        array(
+            "salarie" => $_SESSION['curr_user'][0]['id_s'],
+            "formationId" => $formation->getId()
+        )
+    );
 
     require ('View/pages/formationDetail.php');
 }else{
     echo " F n'existe pas";
-    #header('location:FormationController');
 }
 
 

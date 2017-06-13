@@ -32,7 +32,7 @@ function getFormationById($id){
  * @param $id
  * @return array
  */
-function getAvailableFormationsByUserId($id)
+function getAvailableFormationsByUserId($id,$limit)
 {
     $key = connector();
 
@@ -44,12 +44,13 @@ function getAvailableFormationsByUserId($id)
 							                      AND pa.state != 4
 							                      )
 							ORDER BY date_debut ASC
-                            LIMIT 20		                      ');
+                            LIMIT :limit		                      ');
     $query->bindParam(':id_salarie', $id, PDO::PARAM_INT);
+    $query->bindParam(':limit', $limit, PDO::PARAM_INT);
     $query->execute();
     $availabeFormations = $query->fetchAll(PDO::FETCH_ASSOC);
 
-        return $availabeFormations;
+    return $availabeFormations;
 
 }
 
@@ -79,6 +80,18 @@ function getFormationTypes(){
     return $formationTypes;
 }
 
+/**
+ * @param $id
+ * @param $titre
+ * @param $image
+ * @param $cout
+ * @param $date
+ * @param $duree
+ * @param $place
+ * @param $type
+ * @param $contenu
+ * @param $presta
+ */
 function editFormation($id,$titre,$image,$cout,$date,$duree,$place,$type,$contenu,$presta){
     $key= connector();
     $query = $key->prepare('UPDATE formation
@@ -105,6 +118,10 @@ function editFormation($id,$titre,$image,$cout,$date,$duree,$place,$type,$conten
     $query->execute();
 }
 if (!function_exists('search')) {
+    /**
+     * @param $string
+     * @return array
+     */
     function search($string)
     {
         $link = connector();

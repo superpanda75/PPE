@@ -2,20 +2,69 @@
 
 require 'Model/SalarieDAO.php';
 
+/**
+ * Class Salarie
+ */
 class Salarie
 {
+    /**
+     * @var
+     */
     private $_id;
+    /**
+     * @var
+     */
     private $_nom;
+    /**
+     * @var
+     */
     private $_prenom;
+    /**
+     * @var
+     */
     private $_email;
+    /**
+     * @var
+     */
     private $_photo;
+    /**
+     * @var
+     */
     private $_identifiant;
+    /**
+     * @var
+     */
     private $_password;
+    /**
+     * @var
+     */
     private $_status;
+    /**
+     * @var
+     */
     private $_credit;
+    /**
+     * @var
+     */
     private $_nbJour;
+    /**
+     * @var
+     */
     private $_adresse;
 
+    /**
+     * @param $id
+     * @param $nom
+     * @param $prenom
+     * @param $email
+     * @param null $photo
+     * @param $identifiant
+     * @param $password
+     * @param $status
+     * @param $credit
+     * @param $nbJour
+     * @param null $adresse
+     */
     public function __construct($id,
                                 $nom,
                                 $prenom,

@@ -9,6 +9,8 @@ if (!isset($_POST['charge'])) {
 
 if (!function_exists('upload')) {
     /**
+     * simple fonction d'upload pr le changement de l'image par l'admin
+     *
      * @param $file
      * @return string
      *
@@ -120,8 +122,8 @@ if (isset($_POST['submit'])){
     editFormationAdress($_POST['id'],$_POST['adresse_ville'],$_POST['adresse_rue'],$_POST['adresse_numero'],$_POST['adresse_cp']);
     //ON MODIFIE LA FORMATION
     editFormation($_POST['id'],$_POST['titre'],$image,$_POST['cout'],$dateForDb,
-                  $_POST['duree'],$_POST['place'],$_POST['type'],
-                  $_POST['contenu'],$_POST['presta']);
+        $_POST['duree'],$_POST['place'],$_POST['type'],
+        $_POST['contenu'],$_POST['presta']);
 }
 
 
@@ -140,9 +142,5 @@ if (isset($_GET['f'])){
 
 
     require('View/pages/formationDetailAdmin.php');
-}else{
-
 }
-
-
 ?>

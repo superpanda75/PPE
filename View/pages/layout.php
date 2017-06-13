@@ -1,12 +1,5 @@
 <?php header( 'content-type: text/html; charset=utf-8' ); ?>
 <!DOCTYPE html>
-<!--
-Template Name: Cytocean
-Author: <a href="http://www.os-templates.com/">OS Templates</a>
-Author URI: http://www.os-templates.com/
-Licence: Free to use under our free template licence terms
-Licence URI: http://www.os-templates.com/template-terms
--->
 <html lang="fr">
 <head>
     <title>M2L</title>
@@ -21,12 +14,8 @@ Licence URI: http://www.os-templates.com/template-terms
 
 </head>
 <body id="top">
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
 <div class="wrapper row0">
     <div id="topbar" class="hoc clear">
-        <!-- ################################################################################################ -->
         <div class="fl_left">
             <ul>
                 <li><i class="fa fa-phone"></i> +00 (123) 456 7890</li>
@@ -48,66 +37,50 @@ Licence URI: http://www.os-templates.com/template-terms
                 ?>
             </ul>
         </div>
-        <!-- ################################################################################################ -->
     </div>
 </div>
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
 <div class="wrapper row1">
     <header id="header" class="hoc clear">
         <div id="logo">
-            <!-- ################################################################################################ -->
             <h1><a href="<?=BASE_URL?>/accueil">M.2.L</a></h1>
             <h2>Maison des ligues de la Lorraine</h2>
-            <!-- ################################################################################################ -->
         </div>
         <?php if (isset($_SESSION['curr_user'][0])) { ?>
-        <nav id="mainav" class="clear">
-            <!-- ################################################################################################ -->
-            <ul class="clear">
-                <li class="active"><a href="<?=BASE_URL?>/accueil">Accueil</a></li>
-                <!--<li><a class="drop" href="#">Formations</a>
-                    <ul>
-                        <li><a href="<?/*=BASE_URL*/?>/FormationController">Formations</a></li>
-                        <li><a href="<?/*=BASE_URL*/?>/full-widthController">Commentaires</a></li>
-                        <li><a href="<?/*=BASE_URL*/?>/sidebar-leftController">Sidebar Left</a></li>
-                        <li><a href="<?/*=BASE_URL*/?>/sidebar-rightController">Sidebar Right</a></li>
-                        <li><a href="<?/*= BASE_URL */?>/basic-gridController">Basic Grid</a></li>
-                    </ul>
-                </li>-->
-                <li><a class="drop" href="#">Formations</a>
-                    <ul>
-                        <li><a href="<?=BASE_URL?>/FormationController?City=Dublin'>">A Venir / rechercher</a></li>
-                        <li><a class="drop" href="#">Mes Formations :</a>
+            <nav id="mainav" class="clear">
+                <!-- ################################################################################################ -->
+                <ul class="clear">
+                    <li class="active"><a href="<?=BASE_URL?>/accueil">Accueil</a></li>
+                    <li><a class="drop" href="#">Formations</a>
+                        <ul>
+                            <li><a href='<?=BASE_URL?>/FormationController'>A Venir / rechercher</a></li>
+                            <li><a class="drop" href="#">Mes Formations :</a>
+                                <ul>
+                                    <li><a href='<?=BASE_URL?>/accountController?City=Dublin'>En attente</a></li>
+                                    <li><a href='<?=BASE_URL?>/accountController?City=Paris'>Validées</a></li>
+                                    <li><a href='<?=BASE_URL?>/accountController?City=Tunis'>Éffecuées</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <?php if ($_SESSION['curr_user'][0]['status'] > 1){ ?>
+                    <li><a class="drop" href="#">Équipe</a>
+                        <ul>
+                            <li><a href="<?=BASE_URL?>/myTeamController">Mon Équipe</a></li>
+                            <li><a href="<?=BASE_URL?>/FormationController">Valider des formations</a></li>
+
+                        </ul>
+                    </li>
+                    <?php } if ($_SESSION['curr_user'][0]['status'] == 3){ ?>
+                        <li><a class="drop" href="#">ADMIN</a>
                             <ul>
-                                <li><a href='<?=BASE_URL?>/accountController?City=Dublin'>En attente</a></li>
-                                <li><a href='<?=BASE_URL?>/accountController?City=Paris'>Validées</a></li>
-                                <li><a href='<?=BASE_URL?>/accountController?City=Tunis'>Éffecuées</a></li>
+                                <li><a href="<?=BASE_URL?>/adminSalarieController">Gestion des salariés</a></li>
+                                <li><a href="<?=BASE_URL?>/adminFormController">Gestion des formations</a></li>
+
                             </ul>
                         </li>
-                    </ul>
-                    <?php if ($_SESSION['curr_user'][0]['status'] > 1){ ?>
-                <li><a class="drop" href="#">Équipe</a>
-                    <ul>
-                        <li><a href="<?=BASE_URL?>/myTeamController">Mon Équipe</a></li>
-                        <li><a href="<?=BASE_URL?>/FormationController">Valider des formations</a></li>
-
-                    </ul>
-                </li>
-                <?php } if ($_SESSION['curr_user'][0]['status'] == 3){ ?>
-                <li><a class="drop" href="#">ADMIN</a>
-                    <ul>
-                        <li><a href="<?=BASE_URL?>/adminSalarieController">Gestion des salariés</a></li>
-                        <li><a href="<?=BASE_URL?>/adminFormController">Gestion des formations</a></li>
-
-                    </ul>
-                </li>
-                <?php } ?>
-                </li>
-            </ul>
-            <!-- ################################################################################################ -->
-        </nav>
+                    <?php } ?>
+                    </li>
+                </ul>
+            </nav>
         <?php } ?>
     </header>
 </div>
@@ -122,7 +95,7 @@ echo $contenu;
     <footer id="footer" class="hoc clear">
         <!-- ################################################################################################ -->
         <div class="one_third first">
-            <h6 class="heading">Cytocean</h6>
+            <h6 class="heading">Partagez !</h6>
             <nav>
                 <ul class="nospace">
                     <li><a href="accueil.php"><i class="fa fa-lg fa-home"></i></a></li>
@@ -146,7 +119,7 @@ echo $contenu;
             </ul>
         </div>
         <div class="one_third">
-            <h6 class="heading">Aenean molestie velit</h6>
+            <h6 class="heading">Nous trouver/contacter</h6>
             <ul class="nospace linklist contact">
                 <li><i class="fa fa-map-marker"></i>
                     <address>
@@ -158,23 +131,19 @@ echo $contenu;
             </ul>
         </div>
         <div class="one_third">
-            <h6 class="heading">Aliquam sit condimentum</h6>
+            <h6 class="heading">On vous contacte</h6>
             <form method="post" action="#">
                 <fieldset>
                     <legend>Newsletter:</legend>
                     <input class="btmspace-15" type="text" value="" placeholder="Name">
                     <input class="btmspace-15" type="text" value="" placeholder="Email">
-                    <button type="submit" value="submit">Submit</button>
+                    <button type="submit" value="envoyer">Contact</button>
                 </fieldset>
             </form>
         </div>
-        <!-- ################################################################################################ -->
     </footer>
 </div>
 
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
-<!-- ################################################################################################ -->
 <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
 <!-- JAVASCRIPTS -->
 <script src="<?=BASE_URL?>/View/js/jquery.min.js"></script>

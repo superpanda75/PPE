@@ -33,7 +33,7 @@ function editFormationAdress($idFormation,$adr_v,$adr_r,$adr_n,$adr_cp){
     $query->bindParam(':rue', $adr_r, PDO::PARAM_STR);
     $query->bindParam(':num_rue', $adr_n, PDO::PARAM_INT);
     $query->bindParam(':cp', $adr_cp, PDO::PARAM_INT);
-   $query->execute();
+    $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     if ($query->rowCount()>0) {
         $id = $result[0]['id_a'];

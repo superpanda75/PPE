@@ -198,7 +198,7 @@ Licence URI: http://www.os-templates.com/template-terms
     <footer id="footer" class="hoc clear">
         <!-- ################################################################################################ -->
         <div class="one_third first">
-            <h6 class="heading">Cytocean</h6>
+            <h6 class="heading">Partagez !</h6>
             <nav>
                 <ul class="nospace">
                     <li><a href="accueil.php"><i class="fa fa-lg fa-home"></i></a></li>
@@ -222,7 +222,7 @@ Licence URI: http://www.os-templates.com/template-terms
             </ul>
         </div>
         <div class="one_third">
-            <h6 class="heading">Aenean molestie velit</h6>
+            <h6 class="heading">Nous trouver/contacter</h6>
             <ul class="nospace linklist contact">
                 <li><i class="fa fa-map-marker"></i>
                     <address>
@@ -234,13 +234,13 @@ Licence URI: http://www.os-templates.com/template-terms
             </ul>
         </div>
         <div class="one_third">
-            <h6 class="heading">Aliquam sit condimentum</h6>
+            <h6 class="heading">On vous contacte</h6>
             <form method="post" action="#">
                 <fieldset>
                     <legend>Newsletter:</legend>
                     <input class="btmspace-15" type="text" value="" placeholder="Name">
                     <input class="btmspace-15" type="text" value="" placeholder="Email">
-                    <button type="submit" value="submit">Submit</button>
+                    <button type="submit" value="envoyer">Contact</button>
                 </fieldset>
             </form>
         </div>

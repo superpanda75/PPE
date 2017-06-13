@@ -16,6 +16,10 @@ function getLeaders($id){
     return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
+/**
+ * @param $idUser
+ * @return array
+ */
 function getDemandeur($idUser){
     $key = connector();
 
@@ -32,6 +36,10 @@ function getDemandeur($idUser){
     return $result;
 }
 
+/**
+ * @param $idLeader
+ * @return array
+ */
 function getTeam($idLeader){
     $key = connector();
 

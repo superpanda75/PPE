@@ -62,7 +62,7 @@ Licence URI: http://www.os-templates.com/template-terms
             <!-- ################################################################################################ -->
         </div>
         <?php if (isset($_SESSION['curr_user'][0])) { ?>
-        <nav id="mainav" class="clear">
+            <nav id="mainav" class="clear">
             <!-- ################################################################################################ -->
             <ul class="clear">
                 <li class="active"><a href="<?=BASE_URL?>/accueil">Accueil</a></li>
@@ -105,14 +105,14 @@ Licence URI: http://www.os-templates.com/template-terms
                 </li>
             </ul>
             <!-- ################################################################################################ -->
-        </nav><?php } ?>
+            </nav><?php } ?>
     </header>
 </div>
 
 <form class="ajax" action="adminF.php" method="get">
     <p>
-        <h1><label for="q">Rechercher une formation</label></h1>
-        <input value="" type="text" name="q" id="q" />
+    <h1><label for="q">Rechercher une formation</label></h1>
+    <input value="" type="text" name="q" id="q" />
     </p>
 </form>
 <!--fin du formulaire-->
@@ -190,7 +190,7 @@ Licence URI: http://www.os-templates.com/template-terms
     <footer id="footer" class="hoc clear">
         <!-- ################################################################################################ -->
         <div class="one_third first">
-            <h6 class="heading">Cytocean</h6>
+            <h6 class="heading">Partagez !</h6>
             <nav>
                 <ul class="nospace">
                     <li><a href="accueil.php"><i class="fa fa-lg fa-home"></i></a></li>
@@ -214,7 +214,7 @@ Licence URI: http://www.os-templates.com/template-terms
             </ul>
         </div>
         <div class="one_third">
-            <h6 class="heading">Aenean molestie velit</h6>
+            <h6 class="heading">Nous trouver/contacter</h6>
             <ul class="nospace linklist contact">
                 <li><i class="fa fa-map-marker"></i>
                     <address>
@@ -226,13 +226,13 @@ Licence URI: http://www.os-templates.com/template-terms
             </ul>
         </div>
         <div class="one_third">
-            <h6 class="heading">Aliquam sit condimentum</h6>
+            <h6 class="heading">On vous contacte</h6>
             <form method="post" action="#">
                 <fieldset>
                     <legend>Newsletter:</legend>
                     <input class="btmspace-15" type="text" value="" placeholder="Name">
                     <input class="btmspace-15" type="text" value="" placeholder="Email">
-                    <button type="submit" value="submit">Submit</button>
+                    <button type="submit" value="envoyer">Contact</button>
                 </fieldset>
             </form>
         </div>
@@ -274,8 +274,8 @@ Licence URI: http://www.os-templates.com/template-terms
                     type : 'GET', // envoi des données en GET ou POST
                     url : '<?= BASE_URL ?>/adminFormController', // url du fichier de traitement
                     data : { q: $(this).val(),
-                            vue: 'true'
-                        },// données à envoyer en  GET ou POST
+                        vue: 'true'
+                    },// données à envoyer en  GET ou POST
 
                     beforeSend : function() { // traitements JS à faire AVANT l'envoi
                         $field.after('<img src="<?= BASE_URL ?>View/images/loader.gif" alt="loader" id="ajax-loader" />');

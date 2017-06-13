@@ -38,43 +38,43 @@ function checkRegex($post)
                                                         $erreur = 'Le champ code postal n\'est pas valide';
                                                     }
                                                 }else{
-                                                        $erreur = 'Le champ numéro de rue n\'est pas valide';
-                                                    }
-                                                } else {
-                                                    $erreur = 'Le champ de l\'adresse n\'est pas valide';
+                                                    $erreur = 'Le champ numéro de rue n\'est pas valide';
                                                 }
                                             } else {
-                                                $erreur = 'Le champ de la ville n\'est pas valide';
+                                                $erreur = 'Le champ de l\'adresse n\'est pas valide';
                                             }
                                         } else {
-                                            $erreur = 'Le champ du nom de jour n\'est pas valideé';
+                                            $erreur = 'Le champ de la ville n\'est pas valide';
                                         }
                                     } else {
-                                        $erreur = 'Le champ credit n\'est pas valide';
+                                        $erreur = 'Le champ du nom de jour n\'est pas valideé';
                                     }
                                 } else {
-                                    $erreur = 'Le champ lié aux droits n\'est pas valide';
+                                    $erreur = 'Le champ credit n\'est pas valide';
                                 }
                             } else {
-                                $erreur = 'Le champ mot de passe n\'est pas valide';
+                                $erreur = 'Le champ lié aux droits n\'est pas valide';
                             }
                         } else {
-                            $erreur = 'Le champ identifiant n\'est pas valide';
+                            $erreur = 'Le champ mot de passe n\'est pas valide';
                         }
                     } else {
-                        $erreur = 'Le champ e-mail n\'est pas valide';
+                        $erreur = 'Le champ identifiant n\'est pas valide';
                     }
                 } else {
-                    $erreur = 'Le champ prénom n\'est pas valide';
+                    $erreur = 'Le champ e-mail n\'est pas valide';
                 }
             } else {
-                $erreur = 'Le champ nom n\'est pas valide';
+                $erreur = 'Le champ prénom n\'est pas valide';
             }
         } else {
-            $erreur = 'Le champ Id n\'est pas valide';
+            $erreur = 'Le champ nom n\'est pas valide';
         }
-    return $erreur;
+    } else {
+        $erreur = 'Le champ Id n\'est pas valide';
     }
+    return $erreur;
+}
 
 
 
