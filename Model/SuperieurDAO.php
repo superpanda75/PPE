@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * récupère les infos chef
  * @param $login
  * @param $password
  * @return array
@@ -17,6 +18,7 @@ function getLeaders($id){
 }
 
 /**
+ * récupère les équipiers du cgef d'équipe
  * @param $idUser
  * @return array
  */
@@ -37,6 +39,8 @@ function getDemandeur($idUser){
 }
 
 /**
+ * récupère l'équipe d'un chef
+ * TODO; FONCTION A PROTEGER ABSOLUMENT !
  * @param $idLeader
  * @return array
  */

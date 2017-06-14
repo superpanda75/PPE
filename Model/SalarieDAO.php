@@ -1,6 +1,7 @@
 <?php
 if (!function_exists('getAllSalariesContact')) {
     /**
+     * récupère tout les salariés excepté le salarié en question et l'admin
      * @param $currentUser
      * @return array
      */
@@ -16,14 +17,13 @@ if (!function_exists('getAllSalariesContact')) {
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 }
-/**
- * @param $login
- * @param $password
- * @return array
- */
+
 if (!function_exists('getUserById')) {
+
     /**
-     * @param $id
+     * récupère les infos salarié depuis un id
+     * @param $login
+     * @param $password
      * @return array
      */
     function getUserById($id)
@@ -38,6 +38,7 @@ if (!function_exists('getUserById')) {
 
 if (!function_exists('getManyUsersById')){
     /**
+     * récupère plusieurs users à partir d'un tableau d'id
      * @param array $Users
      * @return array
      */
@@ -62,6 +63,7 @@ if (!function_exists('getManyUsersById')){
 
 if (!function_exists('getUserByLogin')) {
     /**
+     * récupère un user à partir d'un identifiant et un mot de pass // CONNEXION
      * @param $login
      * @param $password
      * @return array
@@ -82,6 +84,7 @@ if (!function_exists('getUserByLogin')) {
 
 if (!function_exists('updateCredit')) {
     /**
+     * Met à jour les crédits salariés
      * @param $idUser
      * @param $amount
      * @return bool
@@ -100,6 +103,7 @@ if (!function_exists('updateCredit')) {
 
 if (!function_exists('searchSalarie')) {
     /**
+     * fonction de recherche salarié
      * @param $string
      * @return array
      */
@@ -119,6 +123,8 @@ if (!function_exists('searchSalarie')) {
 }
 if (!function_exists('getAllSalaries')) {
     /**
+     * Récupère tout les salarié
+     * TODO:FONCTION A PROTEGER !!!!!!!
      * @return array
      */
     function getAllSalaries()
@@ -135,6 +141,7 @@ if (!function_exists('getAllSalaries')) {
 
 if (!function_exists('editSalarie')) {
     /**
+     * modifie un salarié
      * @param $idSalarie
      * @param $nom
      * @param $prenom
@@ -175,6 +182,7 @@ if (!function_exists('editSalarie')) {
 
     if (!function_exists("getEmail")){
         /**
+         * vérifie l'existence d'une adresse email dans la bdd
          * @param $mail
          * @return array
          */
@@ -189,6 +197,7 @@ if (!function_exists('editSalarie')) {
 
     if (!function_exists("insertToken")){
         /**
+         * insert le jeton de changement de mdp dans la bdd
          * @param $mail
          * @return array
          */
@@ -203,6 +212,7 @@ if (!function_exists('editSalarie')) {
 
     if (!function_exists("checkToken")){
         /**
+         * vérifie si un jeton est associé à une adresse email
          * @param $mail
          * @return array
          */
