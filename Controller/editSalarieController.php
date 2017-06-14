@@ -10,6 +10,7 @@ if (!isset($_POST['charge'])) {
 
 if (!function_exists('upload')) {
     /**
+     * Fonction d'upload de fichier image
      * @param $file
      * @return string
      *

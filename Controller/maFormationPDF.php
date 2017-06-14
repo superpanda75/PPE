@@ -8,6 +8,7 @@ require 'corps/formation.php';
 
 if(!function_exists('makeFormation')){
     /**
+     * Construit un objet formation à partir d'un tableau issu de la bdd et formate les données comme la date
      * @param $formation
      * @return Formation
      */

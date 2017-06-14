@@ -1,5 +1,6 @@
 <?php
 /**
+ * récupère un presta depuis son ID
  * @param $id
  * @return array
  */
@@ -14,6 +15,7 @@ function getPrestatireById($id){
 }
 
 /**
+ * récupère tout les presta
  * @return array
  */
 function getAllPrestataire(){

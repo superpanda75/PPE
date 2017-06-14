@@ -108,7 +108,7 @@ foreach ($teamInfos as $salarie) {
                                 <td class=center style='width: 14%'>" . $formation['duree'] . " jours</td>
                                 <td class=center style='width: 14%'>" . $formation['date_debut'] . "</td>
                                 <td class=center style='width: 14%'>" . $formation['date_demande'] . "</td>
-                                <td class=center style='width: 8%'><a href='".BASE_URL."/accountController?City=Dublin'>Valider</a></td>
+                                <td class=center style='width: 8%'><a href='".BASE_URL."/accountController&City=Dublin'>Valider</a></td>
                             </tr>
                         </tbody>
                     </tbody>
@@ -151,7 +151,7 @@ foreach ($teamInfos as $salarie) {
                                         <td class=center style='width: 14%'>" . $formation['duree'] . " jours</td>
                                         <td class=center style='width: 14%'>" . $formation['date_debut'] . "</td>
                                         <td class=center style='width: 14%'>" . $formation['date_validation'] . "</td>
-                                        <td class=center style='width: 8%'><a href='".BASE_URL."/accountController?City=Dublin' style='color:red;'>X</a></td>
+                                        <td class=center style='width: 8%'><a href='".BASE_URL."/accountController&City=Dublin' style='color:red;'>X</a></td>
                                     </tr>
                                 </tbody>
                             </thead>

@@ -14,6 +14,8 @@ function getAdresseById($id){
 }
 
 /**
+ * Modifie l'adresse d'une formation en vérifiant si celle ci a changé ou non par rapport à l'entrée utilisateur
+ * si oui, celle ci est remplacée sinon aucune modif
  * @param $idFormation
  * @param $adr_v
  * @param $adr_r
@@ -93,6 +95,8 @@ function editFormationAdress($idFormation,$adr_v,$adr_r,$adr_n,$adr_cp){
 }
 
 /**
+ * Modifie l'adresse d'un salarié en vérifiant si celle ci a changé ou non par rapport à l'entrée utilisateur
+ * si oui, celle ci est remplacée sinon aucune modif
  * @param $idSalarie
  * @param $adr_v
  * @param $adr_r

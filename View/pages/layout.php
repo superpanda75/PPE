@@ -52,7 +52,7 @@
                     <li class="active"><a href="<?=BASE_URL?>/accueil">Accueil</a></li>
                     <li><a class="drop" href="#">Formations</a>
                         <ul>
-                            <li><a href='<?=BASE_URL?>/FormationController'>A Venir / rechercher</a></li>
+                        <li><a href="<?=BASE_URL?>/FormationController?City=Dublin'>">A Venir / rechercher</a></li>
                             <li><a class="drop" href="#">Mes Formations :</a>
                                 <ul>
                                     <li><a href='<?=BASE_URL?>/accountController?City=Dublin'>En attente</a></li>

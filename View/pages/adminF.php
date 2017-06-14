@@ -77,12 +77,12 @@ Licence URI: http://www.os-templates.com/template-terms
                 </li>-->
                 <li><a class="drop" href="#">Formations</a>
                     <ul>
-                        <li><a href="<?=BASE_URL?>/FormationController?City=Dublin'>">A Venir / rechercher</a></li>
+                        <li><a href="<?=BASE_URL?>/FormationController&City=Dublin'>">A Venir / rechercher</a></li>
                         <li><a class="drop" href="#">Mes Formations :</a>
                             <ul>
-                                <li><a href='<?=BASE_URL?>/accountController?City=Dublin'>En attente</a></li>
-                                <li><a href='<?=BASE_URL?>/accountController?City=Paris'>Validées</a></li>
-                                <li><a href='<?=BASE_URL?>/accountController?City=Tunis'>Éffecuées</a></li>
+                                <li><a href='<?=BASE_URL?>/accountController&City=Dublin'>En attente</a></li>
+                                <li><a href='<?=BASE_URL?>/accountController&City=Paris'>Validées</a></li>
+                                <li><a href='<?=BASE_URL?>/accountController&City=Tunis'>Éffecuées</a></li>
                             </ul>
                         </li>
                     </ul>

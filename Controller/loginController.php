@@ -20,6 +20,7 @@ function connect($login,$password){
 }
 
 /**
+ * fonction permettant de déterminer l'état du cookie
  * @param $id
  * @param $cook
  * @return string
@@ -41,7 +42,7 @@ function checkCookieKey($id,$cook){
 }
 
 /**
- *
+ *fonction de déconnexion
  */
 function disconnect(){
     session_destroy();

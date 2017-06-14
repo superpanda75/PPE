@@ -7,6 +7,7 @@ require 'Model/ParticiperDAO.php';
 
 
 /**
+ * fonction de recherche de formation
  * @param $chaine
  * @return array|null
  */

@@ -50,7 +50,7 @@ if (!function_exists('makeFormationById')) {
      * @param $id
      * @return Formation|null
      *
-     * retourne un onjet de type formation à partir d'un id;
+     * retourne un objet de type formation à partir d'un id;
      */
     function makeFormationById($id)
     {

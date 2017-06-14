@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * gère la connexion à la base en fonction nom d'hôte du serveur
+ */
 if (!function_exists('connector')) {
     function connector()
     {

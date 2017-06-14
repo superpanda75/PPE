@@ -173,6 +173,65 @@ if (!function_exists('editSalarie')) {
     }
 
 
+    if (!function_exists("getEmail")){
+        /**
+         * @param $mail
+         * @return array
+         */
+        function getEmail($mail) {
+            $pdo = connector();
+            $requete = $pdo->prepare('SELECT email FROM salarie WHERE email =:mail');
+            $requete->bindParam(":mail",$mail,PDO::PARAM_STR);
+            $requete->execute();
+            return $requete->fetchAll(PDO::FETCH_ASSOC);
+        }
+    }
+
+    if (!function_exists("insertToken")){
+        /**
+         * @param $mail
+         * @return array
+         */
+        function insertToken($mail,$token) {
+            $pdo = connector();
+            $requete = $pdo->prepare('INSERT INTO salarie (token) VALUES(:tok) WHERE email =:mail');
+            $requete->bindParam(":tok",$token,PDO::PARAM_STR);
+            $requete->bindParam(":mail",$mail,PDO::PARAM_STR);
+            $requete->execute();
+        }
+    }
+
+    if (!function_exists("checkToken")){
+        /**
+         * @param $mail
+         * @return array
+         */
+        function checkToken($mail,$token) {
+            $pdo = connector();
+            $requete = $pdo->prepare('SELECT :tok FROM salarie WHERE email =:mail');
+            $requete->bindParam(":tok",$token,PDO::PARAM_STR);
+            $requete->bindParam(":mail",$mail,PDO::PARAM_STR);
+            $requete->execute();
+            return $requete->fetchAll(PDO::FETCH_ASSOC);
+        }
+    }
+
+
+
+    if (!function_exists("getTokenByUserId")){
+        /**
+         * @param $userId
+         * @return array
+         */
+        function getTokenByUserId($userId) {
+            $pdo = connector();
+            $requete = $pdo->prepare('SELECT token FROM salarie WHERE id =:UserId');
+            $requete->bindParam(":UserId",$userId,PDO::PARAM_INT);
+            $requete->execute();
+            return $requete->fetchAll(PDO::FETCH_ASSOC);
+        }
+    }
+
 }
 
 

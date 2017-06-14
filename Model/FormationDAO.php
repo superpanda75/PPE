@@ -1,5 +1,6 @@
 <?php
 /**
+ * récupère les 40 formations à venir les plus proche dans le temps à partir d'aujourd'hui
  * @return array
  */
 function getAllFormations(){
@@ -15,6 +16,7 @@ function getAllFormations(){
 }
 
 /**
+ * retourne les données formation
  * @param $id
  * @return array
  */
@@ -29,6 +31,7 @@ function getFormationById($id){
 }
 
 /**
+ * renvoie les formation disponibles auxquelles le salarié n'a jamais participé
  * @param $id
  * @return array
  */
@@ -55,6 +58,7 @@ function getAvailableFormationsByUserId($id,$limit)
 }
 
 /**
+ * retourne les types de formation et son libellé
  * @param $id
  * @return array
  */
@@ -69,6 +73,7 @@ function getTypeById($id){
 }
 
 /**
+ * retourne le type d'une formation en fonction de l'id de la formation
  * @return array
  */
 function getFormationTypes(){
@@ -81,6 +86,7 @@ function getFormationTypes(){
 }
 
 /**
+ * modifie une formation en fonction de ses paramètres
  * @param $id
  * @param $titre
  * @param $image
@@ -119,6 +125,7 @@ function editFormation($id,$titre,$image,$cout,$date,$duree,$place,$type,$conten
 }
 if (!function_exists('search')) {
     /**
+     * fonction de recherche de formations dans la bdd
      * @param $string
      * @return array
      */

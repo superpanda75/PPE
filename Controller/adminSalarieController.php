@@ -6,6 +6,7 @@ require 'corps/formation.php';
 require 'corps/salarie.php';
 
 /**
+ * Sécurise l'entrée utilisateur en la formatant
  * @param $var
  * @return string
  */
@@ -18,6 +19,7 @@ function safe($var)
 }
 
 /**
+ * fonction de recherche des salariés
  * @param $chaine
  * @return array|null
  */

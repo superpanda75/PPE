@@ -393,19 +393,30 @@
 </script>
 
 <?php
-if (isset($_GET['City']) == 'Dublin'){
+if (isset($_GET['City']) == 'a'){
+    $_GET['City'] = "London";
     echo "<script>
             jQuery(function(){
    jQuery('#validation').click();
 });
            </script>";
-}elseif(isset($_GET['City']) == 'Paris'){
+}elseif(isset($_GET['City']) == 'b'){
+    $_GET['City'] = "Paris";
     echo "<script>
             jQuery(function(){
-   jQuery('#validation').click();
+   jQuery('#"."Paris"."').click();
 });
            </script>";
-}elseif(isset($_GET['City']) == 'Tunis'){
+}elseif(isset($_GET['City']) == 'c'){
+    $_GET['City'] = "Tunis";
+    echo "<script>
+            jQuery(function(){
+   jQuery('#"."Tunis"."').click();
+});
+           </script>";
+}
+elseif(isset($_GET['City']) == 'd'){
+    $_GET['City'] = "Dublin";
     echo "<script>
             jQuery(function(){
    jQuery('#validation').click();

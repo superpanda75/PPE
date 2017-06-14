@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * récupère les inscriptions et leurs états
  * @param $idSalarie
  * @param $idValidateur
  * @param $idFormation
@@ -25,6 +26,7 @@ function checkInscription($idSalarie,$idValidateur,$idFormation){
 
 
 /**
+ * demande de validation
  * @param $idSalarie
  * @param $idValidateur
  * @param $idFormation
@@ -48,6 +50,7 @@ function addDemande($idSalarie,$idValidateur,$idFormation){
 }
 
 /**
+ * récupère les formations en attente de validation
  * @param $idSalarie
  * @return array
  */
@@ -66,6 +69,7 @@ function getPendingFormationsDatas($idSalarie){
 }
 
 /**
+ * formations validées
  * @param $idSalarie
  * @return array
  */
@@ -85,6 +89,7 @@ function getValidatedFormationsDatas($idSalarie){
 }
 
 /**
+ * formations effectuées
  * @param $idSalarie
  * @return array
  */
@@ -104,6 +109,7 @@ function getDoneFormationsDatas($idSalarie){
 }
 
 /**
+ * TODO :A REWORK !!
  * @param $idSalarie
  * @return array
  */
@@ -124,6 +130,7 @@ function getPendingStatus($idSalarie)
 
 
 /**
+ * récupère les chefs référents du demandeur
  * @param $idSalarie
  * @return array
  */
@@ -142,6 +149,7 @@ function getValidators($idSalarie){
 }
 
 /**
+ * annule une demande de validation ---->et/ou REFUS du chef
  * @param $idParticipation
  * @return bool
  */
@@ -154,6 +162,7 @@ function deleteParticipation($idParticipation){
 }
 
 /**
+ * fonction de validation d'une demande
  * @param $idParticipation
  * @param int $status
  * @return bool
@@ -171,6 +180,7 @@ function  validateFormation($idParticipation, $status = 2){
 }
 
 /**
+ * formations refusées
  * @param $idParticiper
  * @return bool
  */
